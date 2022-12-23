@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Restaurant>
+
+@{
+ ViewData["Title"] = "liste restaurant";
+}
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>localisation</th>
+        <th>speciality</th>
+        <th>Plats</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.Id</td>
+            <td>@r.Name</td>
+            <td>@r.Localisation</td>
+            <td> @r.speciality</td>
+                <td>@Html.ActionLink("ListePlat","ListePlat","Restaurant",new{ id=@r.Id}, new { @class = "img-fluid" })</td>
+
+        </tr>
+    }
+    
+    </tbody>
+</table>
