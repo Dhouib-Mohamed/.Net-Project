@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Restaurant>
+﻿@model List<Restaurant>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,7 +11,7 @@
         @foreach (var r in Model)
         {
             <div class="carousel-item active">
-                <img src=@r.img class="d-block w-100" alt=@r.Name>
+                @r.Name
             </div>
         }
     </div>

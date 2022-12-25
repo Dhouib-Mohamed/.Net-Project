@@ -1,18 +1,23 @@
 ﻿using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using project_.net.Database;
 using project_.net.Models;
 
 namespace project_.net.Controllers
 {
     public class RestaurantController : Controller
     {
+
         public IActionResult Index()
         {
-            var restaurants = getlist();
+            FakeDataGenerator.Restaurants();
+            RestaurantRepository repository = new RestaurantRepository();
+            var restaurants = repository.getRestaurants();
 
             return View(restaurants);
         }
+        /*
         public IActionResult ListeRestaurant()
         {
             var restaurants = getlist();
@@ -48,6 +53,7 @@ namespace project_.net.Controllers
                 List<Restaurant> restaurants = new List<Restaurant>() { restaurant1, restaurant2 };
                 return restaurants;
             }
-        }
-    
+        */
+    }
+
 }

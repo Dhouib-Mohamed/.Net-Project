@@ -7,10 +7,16 @@ namespace project_.net.Models
         
         [Key] public int Id { get; set; }
         [Required] public String Name { get; set; }
-        public String Localisation { get; set; }
-        public String speciality { get; set; }
-        public List<Plat> Plats { get; set; }
-        public String img { get; set; }
+        public String Localization { get; set; }
+        public String image { get; set; }
+
+        public Restaurant( int id, String name , String Localization  , String image )
+        {
+            Id = id;
+            Name= name;
+            this.Localization = Localization;
+            this.image = image; 
+        }
 
     }
 }
