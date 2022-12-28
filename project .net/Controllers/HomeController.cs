@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using project_.net.Models;
 using System.Diagnostics;
+using project_.net.Database;
+using project_.net.Models.project_.net.Models;
 
 namespace project_.net.Controllers
 {
@@ -11,13 +13,14 @@ namespace project_.net.Controllers
         
 
         public IActionResult Index()
-        {
+        { FakeDataGenerator.Clients();
             return View();
         }
 
         public IActionResult Privacy()
-        {
-            return View();
+        { Context context = Context.getInstance();
+            List<Client> clients = context.Client.ToList();
+            return View(clients);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

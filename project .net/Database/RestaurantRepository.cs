@@ -21,7 +21,7 @@ public class RestaurantRepository
 	}
     public void addCategory(Category category)
     {
-        context.Categories.Add(category);
+        context.Category.Add(category);
         context.SaveChanges();
 
     }
