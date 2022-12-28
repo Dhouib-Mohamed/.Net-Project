@@ -18,10 +18,18 @@ namespace project_.net.Database
          {
              if (Singleton == null)
              {
-                 Singleton = new Context(null);
+                 Singleton = Instatiate_Context();
              }
              return Singleton;
          }
-        
+        public static Context Instatiate_Context()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<Context>();
+
+            optionsBuilder.UseSqlServer(@"server=.;Database=MyData");
+
+            return new Context(optionsBuilder.Options);
+        }
+
     }
 }
