@@ -12,7 +12,7 @@ namespace project_.net.Database
             for (int i = 0; i < 20; i++)
             {
                
-                Client r = new Client(){ID=i, Name=Faker.Name.FullName(), email = Faker.Name.Middle(), password = Faker.Address.Country(), phoneNumber = Faker.Phone.Number()};
+                Client r = new Client(){ Name=Faker.Name.FullName(), email = Faker.Name.Middle(), password = Faker.Address.Country(), phoneNumber = Faker.Phone.Number()};
                 context.Client.Add(r);
                 context.SaveChanges();
             }

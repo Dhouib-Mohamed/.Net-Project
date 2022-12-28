@@ -25,8 +25,7 @@ namespace project_.net.Database
         public static Context Instatiate_Context()
         {
             var optionsBuilder = new DbContextOptionsBuilder<Context>();
-
-            optionsBuilder.UseSqlServer(@"server=.;Database=MyData");
+            optionsBuilder.UseSqlServer(@"server=.;Database=MyData;TrustServerCertificate=True ; Integrated Security=SSPI ;", builder=>builder.EnableRetryOnFailure());
 
             return new Context(optionsBuilder.Options);
         }

@@ -7,7 +7,6 @@ namespace project_.net.Models
         public class Client
         {
             [Key]
-            [Display(Name = "ID")]
             public int ID { get; set; }
 
 
