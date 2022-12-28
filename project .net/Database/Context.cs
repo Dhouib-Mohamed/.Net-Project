@@ -7,6 +7,7 @@ namespace project_.net.Database
     {
         private static Context? Singleton = null;
         public DbSet<Restaurant> Restaurant { get; set; }
+        public DbSet<Category> Categories { get; set; }
         private Context(DbContextOptions o) : base(o) { }
 
         public static Context getInstance()

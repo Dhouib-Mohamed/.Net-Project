@@ -19,8 +19,19 @@ public class RestaurantRepository
 		context.SaveChanges();
 
 	}
-	public List<Restaurant> getRestaurants()
+    public void addCategory(Category category)
+    {
+        context.Categories.Add(category);
+        context.SaveChanges();
+
+    }
+    public List<Restaurant> getRestaurants()
 	{
 		return context.Restaurant.ToList();
 	}
+    public Restaurant getRestaurantByid(int id)
+    {
+       Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.Id == id);
+        return (restaurant);
+    }
 }
