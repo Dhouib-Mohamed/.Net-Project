@@ -13,7 +13,7 @@ namespace project_.net.Controllers
         
 
         public IActionResult Index()
-        { FakeDataGenerator.Clients();
+        { /*FakeDataGenerator.Clients();*/
             return View();
         }
 
