@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using project_.net.Database;
 
@@ -11,9 +12,11 @@ using project_.net.Database;
 namespace project.net.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221230201344_ñp")]
+    partial class ñp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace project.net.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CategoryRestaurant", b =>
+                {
+                    b.Property<int>("RestaurantsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("categoriesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RestaurantsId", "categoriesId");
+
+                    b.HasIndex("categoriesId");
+
+                    b.ToTable("CategoryRestaurant");
+                });
 
             modelBuilder.Entity("project_.net.Models.Category", b =>
                 {
@@ -34,55 +52,20 @@ namespace project.net.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestaurantId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("project_.net.Models.Client", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("phoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Client");
-                });
-
             modelBuilder.Entity("project_.net.Models.Reservation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("clientId")
+                    b.Property<int>("clientID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("date")
@@ -91,12 +74,12 @@ namespace project.net.Migrations
                     b.Property<int>("nbPlacesRes")
                         .HasColumnType("int");
 
-                    b.Property<int?>("restaurantId")
+                    b.Property<int>("restaurantId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("clientId");
+                    b.HasIndex("clientID");
 
                     b.HasIndex("restaurantId");
 
@@ -131,31 +114,68 @@ namespace project.net.Migrations
                     b.ToTable("Restaurant");
                 });
 
-            modelBuilder.Entity("project_.net.Models.Category", b =>
+            modelBuilder.Entity("project_.net.Models.project_.net.Models.Client", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("phoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Client");
+                });
+
+            modelBuilder.Entity("CategoryRestaurant", b =>
                 {
                     b.HasOne("project_.net.Models.Restaurant", null)
-                        .WithMany("categories")
-                        .HasForeignKey("RestaurantId");
+                        .WithMany()
+                        .HasForeignKey("RestaurantsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("project_.net.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("categoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("project_.net.Models.Reservation", b =>
                 {
-                    b.HasOne("project_.net.Models.Client", "client")
+                    b.HasOne("project_.net.Models.project_.net.Models.Client", "client")
                         .WithMany()
-                        .HasForeignKey("clientId");
+                        .HasForeignKey("clientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("project_.net.Models.Restaurant", "restaurant")
                         .WithMany()
-                        .HasForeignKey("restaurantId");
+                        .HasForeignKey("restaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("client");
 
                     b.Navigation("restaurant");
-                });
-
-            modelBuilder.Entity("project_.net.Models.Restaurant", b =>
-                {
-                    b.Navigation("categories");
                 });
 #pragma warning restore 612, 618
         }

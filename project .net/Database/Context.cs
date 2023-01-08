@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using project_.net.Models;
-using project_.net.Models.project_.net.Models;
 
 
 namespace project_.net.Database

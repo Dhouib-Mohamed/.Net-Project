@@ -11,7 +11,6 @@ namespace project_.net.Controllers
         RestaurantRepository repository = new RestaurantRepository();
         public IActionResult Index()
         {
-            FakeDataGenerator.Restaurants();
            // RestaurantRepository repository = new RestaurantRepository();
             var restaurants = repository.getRestaurants();
 
@@ -29,6 +28,11 @@ namespace project_.net.Controllers
         {
            
             return View();
+        }
+        public IActionResult Faker()
+        {
+            FakeDataGenerator.Restaurants();
+            return RedirectToAction(nameof(Index));
         }
         /*
         public IActionResult ListeRestaurant()

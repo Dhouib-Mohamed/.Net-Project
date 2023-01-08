@@ -1,5 +1,4 @@
 ﻿using project_.net.Models;
-using project_.net.Models.project_.net.Models;
 
 namespace project_.net.Database
 {
@@ -11,33 +10,30 @@ namespace project_.net.Database
 
             for (int i = 0; i < 20; i++)
             {
-               
-                Client r = new Client(){ Name=Faker.Name.FullName(), email = Faker.Name.Middle(), password = Faker.Address.Country(), phoneNumber = Faker.Phone.Number()};
+                Client r = new Client(Faker.Name.FullName(), Faker.Name.Middle(), Faker.Address.Country(), Faker.Phone.Number());
                 context.Client.Add(r);
                 context.SaveChanges();
             }
-            
+
         }
         public static void Restaurants()
         {
-        }
-       /* for (int i =0; i < 20; i++)
+            Context context = Context.getInstance();
+            for (int i = 0; i < 20; i++)
             {
-                RestaurantRepository restaurantRepository= new RestaurantRepository();
-                Restaurant r = new Restaurant(i,Faker.Company.Name(),Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg",Faker.RandomNumber.Next(5,50),Faker.RandomNumber.Next(0,20));
-                restaurantRepository.addRestaurant(r);
+                Category c = new Category(Faker.Name.Suffix());
             }
-        }
-       */
-       public static void Category()
-       {
-       } 
-      /* for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
+                Category c = new Category(Faker.Name.Suffix());
+                context.Category.Add(c);
                 RestaurantRepository restaurantRepository = new RestaurantRepository();
-                Category c = new Category(i, Faker.Country.Name());
-                restaurantRepository.addCategory(c);
+                Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg", Faker.RandomNumber.Next(5, 50));
+                r.categories.Add(c);
+                context.Restaurant.Add(r);
+                context.SaveChanges();
+
             }
-        }*/
+        }
     }
 }

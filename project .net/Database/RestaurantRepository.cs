@@ -17,7 +17,6 @@ public class RestaurantRepository
 	{
 		context.Restaurant.Add(restaurant);
 		context.SaveChanges();
-
 	}
     public void addCategory(Category category)
     {
@@ -33,5 +32,11 @@ public class RestaurantRepository
     {
        Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.Id == id);
         return (restaurant);
+    }
+    public void deleteRestaurant(int id)
+    {
+        Restaurant restaurant = getRestaurantByid(id);
+        context.Restaurant.Remove(restaurant);
+        context.SaveChanges();
     }
 }

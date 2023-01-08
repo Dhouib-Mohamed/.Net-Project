@@ -6,8 +6,11 @@ namespace project_.net.Models
     {
         [Key]public int Id { get; set; }
         public String Name { get; set; }
-        public List<Restaurant> Restaurants { get; set; }
 
+        public Category(String name)
+        {
+            Name = name;
+        }
        
     }
 }

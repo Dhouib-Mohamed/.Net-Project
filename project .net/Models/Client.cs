@@ -2,12 +2,10 @@
 
 namespace project_.net.Models
 {
-    namespace project_.net.Models
-    {
         public class Client
         {
             [Key]
-            public int ID { get; set; }
+            public int Id { get; set; }
 
 
             [Required(ErrorMessage = "Please enter you full name")]
@@ -26,9 +24,12 @@ namespace project_.net.Models
             [Required(ErrorMessage = "Phone Number Required!")]
             [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Entered phone format is not valid.")]
             public string phoneNumber { get; set; }
-
-           
-           
+            public Client(string name, string email, string password, string phoneNumber)
+            {
+                Name = name;
+                this.email = email;
+                this.password = password;
+                this.phoneNumber = phoneNumber;
+            }
         }
     }
-}

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace project_.net.Models
 {
@@ -14,6 +13,15 @@ namespace project_.net.Models
         public int NbPlaces { get; set; }
          
         public List<Category> categories { get; set; }
+
+        public Restaurant( String name, String localization ,String image, int nbPlaces) {
+            categories = new List<Category>();
+            Name= name;
+            Localization=localization;
+            this.NbPlaces= nbPlaces;
+            this.image= image;
+
+        }
 
       
     }
