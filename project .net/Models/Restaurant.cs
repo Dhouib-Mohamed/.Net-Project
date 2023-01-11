@@ -5,17 +5,21 @@ namespace project_.net.Models
     public class Restaurant
     {
         
-        [Key] public int Id { get; set; }
+        [Key] public int ID { get; set; }
         [Required] public String Name { get; set; }
         public String Localization { get; set; }
+        public int NbPlaces { get; set; }
         public String image { get; set; }
+        public Category category { get; set; }
 
-        public Restaurant( int id, String name , String Localization  , String image )
+        public Restaurant( String name , String Localization  , String image )
         {
-            Id = id;
+          //  ID = id;
             Name= name;
             this.Localization = Localization;
             this.image = image; 
+           // this.NbPlaces = nbPlaces;
+            //this.category = c;
         }
 
     }

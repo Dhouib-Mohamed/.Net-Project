@@ -42,10 +42,10 @@
     @foreach (var r in Model)
     {
         <tr>
-            <td>@r.Id</td>
+            <td>@r.ID</td>
             <td>@r.Name</td>
             <td>@r.Localization</td>
-                <td>@Html.ActionLink("ListePlat","ListePlat","Restaurant",new{ id=@r.Id}, new { @class = "img-fluid" })</td>
+                <td>@Html.ActionLink("ListePlat","ListePlat","Restaurant",new{ id=@r.ID}, new { @class = "img-fluid" })</td>
 
         </tr>
     }
