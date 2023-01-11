@@ -4,8 +4,13 @@ namespace project_.net.Models
 {
     public class Category
     {
-        [Key]
-        public int ID { get; set; }
-        public string Name { get; set; }
+        [Key]public int Id { get; set; }
+        public String Name { get; set; }
+
+        public Category(String name)
+        {
+            Name = name;
+        }
+       
     }
 }

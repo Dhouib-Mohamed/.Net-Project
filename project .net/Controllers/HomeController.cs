@@ -8,9 +8,14 @@ namespace project_.net.Controllers
 {
     public class HomeController : Controller
     {
+        ClientRepository clientRepository = new ClientRepository();
+
+        
+
         public IActionResult Index()
         {
-            return View();
+            List<Client> clients = clientRepository.getClients();
+            return View(clients);
         }
         public IActionResult Signup()
         {
@@ -37,16 +42,10 @@ namespace project_.net.Controllers
             IEnumerable<Client> clients = (IEnumerable<Client>)context.Client.Where(e => e.email == c.email && e.password == c.password);
             if (clients.Count()==0) { ViewBag.NotFound = true; }
             return View();
-        }
-
-        public IActionResult Users()
-        {   
-            ClientRepository rep = new ClientRepository();
-            IEnumerable<Client> l = rep.allClients();
-            return View(l);
-        }
         public IActionResult Privacy()
         {
+            return View();
+        }
             return View();
         }
 
@@ -54,6 +53,11 @@ namespace project_.net.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Faker()
+        {
+            FakeDataGenerator.Clients();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

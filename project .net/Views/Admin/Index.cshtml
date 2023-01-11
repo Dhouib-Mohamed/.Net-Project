@@ -1,0 +1,14 @@
+﻿<h1>
+    Restaurants
+</h1>
+@foreach (Restaurant r in ViewBag.Restaurants)
+{
+   <p>@r.Name , , @r.NbPlaces</p>
+}
+<h1>
+    Clients
+</h1>
+@foreach (Client c in ViewBag.Clients)
+{
+    <p>@c.Name , , @c.email</p>
+}

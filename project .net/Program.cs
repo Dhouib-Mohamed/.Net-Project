@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using project_.net.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection") , sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    }
+));
+
 
 var app = builder.Build();
 

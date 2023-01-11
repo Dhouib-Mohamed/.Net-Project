@@ -17,10 +17,26 @@ public class RestaurantRepository
 	{
 		context.Restaurant.Add(restaurant);
 		context.SaveChanges();
-
 	}
-	public List<Restaurant> getRestaurants()
+    public void addCategory(Category category)
+    {
+        context.Category.Add(category);
+        context.SaveChanges();
+
+    }
+    public List<Restaurant> getRestaurants()
 	{
 		return context.Restaurant.ToList();
 	}
+    public Restaurant getRestaurantByid(int id)
+    {
+       Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.Id == id);
+        return (restaurant);
+    }
+    public void deleteRestaurant(int id)
+    {
+        Restaurant restaurant = getRestaurantByid(id);
+        context.Restaurant.Remove(restaurant);
+        context.SaveChanges();
+    }
 }

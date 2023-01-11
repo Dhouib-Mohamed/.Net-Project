@@ -1,32 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using project_.net.Database;
+using project_.net.Models;
 
 namespace project_.net.Controllers
 {
     public class AdminController : Controller
     {
+
+        ClientRepository clientRepository = new ClientRepository();
+        RestaurantRepository restaurantRepository = new RestaurantRepository();
         // GET: AdminController
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: AdminController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AdminController/Create
-        public ActionResult Create()
-        {
+            List<Restaurant> restaurants = restaurantRepository.getRestaurants();
+            List<Client> clients = clientRepository.getClients();
+            ViewBag.Clients = clients;
+            ViewBag.Restaurants = restaurants;
             return View();
         }
 
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateRestaurant(IFormCollection collection)
         {
             try
             {
@@ -36,18 +32,12 @@ namespace project_.net.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: AdminController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
         }
 
         // POST: AdminController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditRestaurant(int id, IFormCollection collection)
         {
             try
             {
@@ -57,27 +47,20 @@ namespace project_.net.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: AdminController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
         // POST: AdminController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteRestaurant(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            restaurantRepository.deleteRestaurant(id);
+            return RedirectToAction(nameof(Index));
+        }
+        public ActionResult DeleteClient(int id, IFormCollection collection)
+        {
+            clientRepository.deleteClient(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

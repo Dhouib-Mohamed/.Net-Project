@@ -1,4 +1,12 @@
-﻿@{
+﻿@model List<Client>
+
+
+
+@foreach (var c in Model)
+{
+    <p>@c.Name , , @c.email</p>
+}
+@{
     ViewData["Title"] = "Home Page";
 }
 

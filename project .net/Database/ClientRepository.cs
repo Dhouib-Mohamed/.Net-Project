@@ -5,22 +5,32 @@ namespace project_.net.Database
 {
     public class ClientRepository
     {
-        Context context = Context.getInstance();
+        Context context;
         public ClientRepository()
         {
             context = Context.getInstance();
 
         }
-        public void addClient(Client c)
+        public void add(Client client)
         {
-            context.Client.Add(c);
+            context.Client.Add(client);
             context.SaveChanges();
 
         }
-        public IEnumerable<Client> allClients()
+        public List<Client> getClients()
         {
-            return context.Set<Client>().ToList();
-
+            return context.Client.ToList();
+        }
+        public Client getClientByid(int id)
+        {
+            Client client = (Client)context.Client.Where(r => r.Id == id);
+            return (client);
+        }
+        public void deleteClient(int id)
+        {
+            Client client = getClientByid(id);
+            context.Client.Remove(client);
+            context.SaveChanges();
         }
 
     }
