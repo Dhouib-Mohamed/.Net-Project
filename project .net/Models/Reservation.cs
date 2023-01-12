@@ -1,6 +1,4 @@
-﻿
-
-namespace project_.net.Models
+﻿namespace project_.net.Models
 {
     public class Reservation
     {

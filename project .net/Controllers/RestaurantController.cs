@@ -19,15 +19,10 @@ namespace project_.net.Controllers
         public IActionResult restaurant_detail(int id)
         {
           //  RestaurantRepository repository = new RestaurantRepository();
-         Restaurant restaurant = repository.getRestaurantByid(id);
+         Restaurant restaurant = repository.getRestaurantById(id);
          return View(restaurant);
         }
-
-        public IActionResult book()
-        {
-           
-            return View();
-        }
+        
         public IActionResult Faker()
         {
             FakeDataGenerator.Restaurants();

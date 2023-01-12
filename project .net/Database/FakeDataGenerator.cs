@@ -14,7 +14,6 @@ namespace project_.net.Database
                 context.Client.Add(r);
                 context.SaveChanges();
             }
-
         }
 
         public static void Categories()
@@ -32,13 +31,11 @@ namespace project_.net.Database
             for (int i = 0; i < 20; i++)
             {
                 Category c = new Category(Faker.Name.Suffix());
-                context.Category.Add(c);
                 RestaurantRepository restaurantRepository = new RestaurantRepository();
                 Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg", Faker.RandomNumber.Next(5, 50));
                 r.categories.Add(c);
                 context.Restaurant.Add(r);
                 context.SaveChanges();
-
             }
         }
     }

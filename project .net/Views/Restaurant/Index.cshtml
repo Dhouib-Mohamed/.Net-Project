@@ -53,12 +53,12 @@
 *@ 
 <div class="row">
     @foreach (var r in Model){
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">@r.Name</h5>
-                    <img  src=@r.image alt=@r.Name>
-                    <a href=@Html.ActionLink("detail","restaurant_detail","Restaurant",new {Id=@r.Id}) class="btn btn-primary">details</a>
+                    <img src=@r.image alt=@r.Name class="card-img">
+                    @Html.ActionLink("detail","restaurant_detail","Restaurant",new {Id=@r.Id})
                 </div>
             </div>
         </div>

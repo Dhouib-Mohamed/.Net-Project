@@ -1,4 +1,5 @@
 ﻿using project_.net.Models;
+using System.Xml;
 
 namespace project_.net.Database
 {
@@ -14,21 +15,23 @@ namespace project_.net.Database
         {
             context.Client.Add(client);
             context.SaveChanges();
+
         }
         public List<Client> getClients()
         {
             return context.Client.ToList();
         }
-        public Client getClientByid(int id)
+        public Client getClientById(int id)
         {
-            Client client = (Client)context.Client.Where(r => r.Id == id);
+            Client? client = context.Client.Find(id);
             return (client);
         }
         public void deleteClient(int id)
         {
-            Client client = getClientByid(id);
+            Client client = getClientById(id);
             context.Client.Remove(client);
             context.SaveChanges();
         }
+
     }
 }
