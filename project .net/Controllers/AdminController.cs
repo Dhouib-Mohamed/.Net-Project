@@ -17,6 +17,8 @@ namespace project_.net.Controllers
             ViewBag.Clients = clients;
             ViewBag.Restaurants = restaurants;
             return View();
+
+
         }
 
         // POST: AdminController/Create

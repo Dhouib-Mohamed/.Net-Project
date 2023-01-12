@@ -11,7 +11,6 @@ namespace project_.net.Controllers
         RestaurantRepository repository = new RestaurantRepository();
         public IActionResult Index()
         {
-           // RestaurantRepository repository = new RestaurantRepository();
             var restaurants = repository.getRestaurants();
 
             return View(restaurants);
