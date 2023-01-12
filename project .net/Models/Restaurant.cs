@@ -20,9 +20,6 @@ namespace project_.net.Models
             Localization=localization;
             this.NbPlaces= nbPlaces;
             this.image= image;
-
         }
-
-      
     }
 }

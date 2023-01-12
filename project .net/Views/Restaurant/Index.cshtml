@@ -6,25 +6,7 @@
 
 
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        @foreach (var r in Model)
-        {
-            <div class="carousel-item active">
-                <img  src=@r.image alt=@r.Name>
-            </div>
-        }
-    </div>
-   
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
+
  
     
     
@@ -46,12 +28,12 @@
 *@ 
 <div class="row">
     @foreach (var r in Model){
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">@r.Name</h5>
-                    <img  src=@r.image alt=@r.Name>
-                    <a href=@Html.ActionLink("detail","restaurant_detail","Restaurant",new {Id=@r.Id}) class="btn btn-primary">details</a>
+                    <img src=@r.image alt=@r.Name class="card-img">
+                    @Html.ActionLink("detail","restaurant_detail","Restaurant",new {Id=@r.Id})
                 </div>
             </div>
         </div>

@@ -19,14 +19,14 @@ namespace project_.net.Database
         {
             return context.Client.ToList();
         }
-        public Client getClientByid(int id)
+        public Client getClientById(int id)
         {
-            Client client = (Client)context.Client.Where(r => r.Id == id);
+            Client? client = context.Client.Find(id);
             return (client);
         }
         public void deleteClient(int id)
         {
-            Client client = getClientByid(id);
+            Client client = getClientById(id);
             context.Client.Remove(client);
             context.SaveChanges();
         }
