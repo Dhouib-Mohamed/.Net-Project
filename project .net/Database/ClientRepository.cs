@@ -1,4 +1,5 @@
 ﻿using project_.net.Models;
+using System.Xml;
 
 namespace project_.net.Database
 {
@@ -14,6 +15,7 @@ namespace project_.net.Database
         {
             context.Client.Add(client);
             context.SaveChanges();
+
         }
         public List<Client> getClients()
         {
@@ -30,5 +32,6 @@ namespace project_.net.Database
             context.Client.Remove(client);
             context.SaveChanges();
         }
+
     }
 }

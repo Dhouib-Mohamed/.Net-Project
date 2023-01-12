@@ -6,7 +6,7 @@ namespace project_.net.Models
     public class Restaurant
     {
         
-        [Key] public int Id { get; set; }
+        [Key] public int ID { get; set; }
         [Required] public String Name { get; set; }
         public String Localization { get; set; }
         public String image { get; set; }

@@ -1,11 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.ComponentModel.DataAnnotations;
 
 namespace project_.net.Models
 {
         public class Client
         {
             [Key]
+<<<<<<< HEAD
             public int Id { get; private set; }
+=======
+        [Display(Name="ID")]
+        public int ID { get; set; }
+>>>>>>> d3f02fcb80ae22f9edd1b8bded7c4feb520c7864
 
 
             [Required(ErrorMessage = "Please enter you full name")]
@@ -24,12 +30,22 @@ namespace project_.net.Models
             [Required(ErrorMessage = "Phone Number Required!")]
             [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Entered phone format is not valid.")]
             public string phoneNumber { get; set; }
-            public Client(string name, string email, string password, string phoneNumber)
+
+        public Client()
+        {
+            ID = 0;
+            Name = "";
+            this.email = "";
+            password = "";
+            this.phoneNumber = "";
+        }
+        public Client(string name, string email, string pwd,string phoneNumber)
             {
                 Name = name;
                 this.email = email;
-                this.password = password;
+            password = pwd;
                 this.phoneNumber = phoneNumber;
+            
             }
         }
     }
