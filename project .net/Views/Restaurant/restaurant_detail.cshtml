@@ -4,6 +4,28 @@
     ViewData["Title"] = "detail restaurant";
 }
 
+
+@*
+<div class="align-content-lg-around">
+    <div class="row">
+        <div class="col-md-7">
+            <img src="https://orchardinn.com/wp-content/uploads/2015/08/12636831725_449251cb75_z-272x182.jpg" width="300" />
+
+        </div>
+        <div class="col-4">
+            <h5 class="card-title">@Model.Name</h5>
+            @foreach (var cate in Model.categories)
+            {
+                <p class="card-text">Category : @cate.Name </p>
+            }
+
+        </div>
+
+    </div>
+</div>
+
+*@
+
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src=@Model.image alt="Card image cap">
     <div class="card-body">
@@ -16,4 +38,4 @@
         
         
     </div>
-</div>
+    </div>

@@ -42,6 +42,19 @@ public class RestaurantRepository
 	    Restaurant restaurant = _context.Restaurant.Find(id);
         return restaurant;
     }
+
+    public List<Restaurant> RestaurantListByName(String name)
+    {
+	    List<Restaurant> restaurants = new List<Restaurant>();
+	    _context.Restaurant.ToList().ForEach((restaurant =>
+	    {
+		    if (restaurant.Name.ToLower().Contains(name.ToLower()))
+		    {
+			    restaurants.Add(restaurant);
+		    }
+	    }));
+	    return restaurants;
+    }
     public void deleteRestaurant(int id)
     {
 	    Restaurant restaurant = getRestaurantById(id);
