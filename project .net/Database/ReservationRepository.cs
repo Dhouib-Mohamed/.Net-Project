@@ -5,12 +5,11 @@ namespace project_.net.Database
     public class ReservationRepository
     {
         Context context = Context.getInstance();
-        public Reservation getReservationByClientId(int id)
+        public List<Reservation> getReservationsByClientId(int id)
         {   
             ClientRepository rep = new ClientRepository();
             Client c = rep.getClientById(id);
-            Reservation reservation =(Reservation) context.Reservation.Where(a => a.client == c);
-            return reservation;
+            return context.Reservation.Where(a => a.client == c).ToList();
         }
 
         public void addReservation(int clientId, int restaurantId, DateTime date, int nb)

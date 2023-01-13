@@ -39,7 +39,7 @@ namespace project_.net.Controllers
             Debug.Write(HttpContext.Session.GetInt32("user"));
             HttpContext.Session.SetInt32("userId", c.Id);
             // redirect to /Client/index
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),nameof(Restaurant));
         }
         public IActionResult Signin()
         {
