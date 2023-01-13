@@ -9,7 +9,6 @@ namespace project_.net.Controllers
         ClientRepository rep1 = new ClientRepository();
         public IActionResult ProfileDetails()
         {
-            ViewData["NavMenuPage"] = "profile";
             if (HttpContext.Session.GetInt32("user") != 1)
             {
                 return RedirectToAction("Signin","Home");
@@ -17,7 +16,7 @@ namespace project_.net.Controllers
             else
             {
                 ViewData["NavMenuPage"] = "profile";
-                Client c = rep1.getClientById(1);
+                Client c = rep1.getClientById(HttpContext.Session.GetInt32("userId")??-1);
                 return View(c);
             }
         
