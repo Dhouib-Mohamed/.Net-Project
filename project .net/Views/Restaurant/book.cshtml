@@ -1,4 +1,4 @@
-﻿@model Reservation
+﻿
 @{
 
     ViewData["Title"] = "book";
@@ -7,7 +7,7 @@
 
 
 
-@using (Html.BeginForm("book", "Restaurant", FormMethod.Post))
+@using (Html.BeginForm("book", "Restaurant", FormMethod.Post,new {id=@ViewBag.id}))
 {
     <div class="container register" style="height:1000px">
         <div class="row justify-content-around">
@@ -23,14 +23,12 @@
                             <div class="col">
                                 <div class="row form-group">
                                     <p style="font-size: 20px">DATE</p>
-                                    @Html.TextBoxFor(e => e.date, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(e => e.date)
+                                    <input type="datetime" name ="Date" class="form-control">
                                 </div>
                                 <div class="row form-group">
                                     <p style="font-size: 20px">NOMBRE DE PLACE</p>
-                                  
-                                    @Html.TextBoxFor(e => e.nbPlacesRes, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(e => e.nbPlacesRes)
+                                    <input type="number" name ="Places" class="form-control">
+
                                 </div>
 
                                 

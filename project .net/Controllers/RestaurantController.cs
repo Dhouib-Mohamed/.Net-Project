@@ -52,9 +52,17 @@ namespace project_.net.Controllers
             }
         }
         [HttpGet]
-        public IActionResult book()
+        public IActionResult book(int id)
         {
-            return View();
+            ViewBag.id = id;
+            return View(id);
+        }
+        [HttpPost]
+        public IActionResult book(IFormCollection collection,int id)
+        {
+            ReservationRepository reservationRepository = new ReservationRepository();
+            reservationRepository.addReservation(HttpContext.Session.GetInt32("userId")??-1,id,DateTime.Parse(collection["Date"]),Int32.Parse(collection["Places"]));
+            return RedirectToAction(nameof(Index));
         }
     }
 }
