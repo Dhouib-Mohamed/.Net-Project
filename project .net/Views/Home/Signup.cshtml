@@ -8,15 +8,16 @@
 {
     <div class="container register" style="height:2000px">
         <div class="row">
-            <div class="col-md-3 register-left">
-                <img src="" alt="logo" />
+            <div class="col-md-5 register-left">
+                <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80&fbclid=IwAR28W4Yw47xHCDZ69nW4yY16WLQ8rchbr_OwQFkTPjsmHzUHnhcGjiDdz-U" alt="logo" />
+                
+            </div>
+            <div class="col-md-7">
                 <h3 style="height:30px">Welcome</h3>
                 <p>
                     You are a few clicks away from creating your account 
                     <br />
                 </p>
-            </div>
-            <div class="col-md-9 ">
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="../Home/Signup" role="tab" aria-controls="home" aria-selected="true">Sign up</a>
@@ -31,27 +32,35 @@
                         <h3 class="register-heading">Register</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group w-100">
+                                    NAME :
                                     @Html.TextBoxFor(e => e.Name, new { @class = "form-control", placeholder = "Full Name *" })
                                     @Html.ValidationMessageFor(e => e.Name)
                                 </div>
-                                <div class="form-group">
+                                <br />
+                                <div class="form-group w-100">
+                                    EMAIL :
                                     @Html.TextBoxFor(e => e.email, new { @class = "form-control", placeholder = "Your Email *" })
                                     @Html.ValidationMessageFor(e => e.email)
                                 </div>
-                            
-                                <div class="form-group">
+                                <br/>
+                                <div class="form-group w-100">
+                                    PASSWORD :
                                     @Html.TextBoxFor(e => e.password, new { id = "password", @class = "form-control", placeholder = "Password *" })
                                     @Html.ValidationMessageFor(e => e.password)
                                 </div>
-                                <div class="form-group">
+                                <br />
+                                <div class="form-group w-100">
+                                    PHONE NUMBER
                                     @Html.TextBoxFor(e => e.phoneNumber, new { @class = "form-control", placeholder = "Your Phone number *" })
                                     @Html.ValidationMessageFor(e => e.phoneNumber)
 
                                 </div>
+                                <br/>
                                 <div style="height:30px"></div>
-                                <input type="submit" class="btnRegister" value="Sign up" />
+                                <input type="submit" class="btnRegister btn btn-dark" value="Sign up" />
                             </div>
+                           
                         </div>
                     </div>
                 </div>
