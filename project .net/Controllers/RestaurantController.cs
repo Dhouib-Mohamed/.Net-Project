@@ -9,9 +9,10 @@ namespace project_.net.Controllers
     public class RestaurantController : Controller
     {
         RestaurantRepository repository = new RestaurantRepository();
+
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("user")!=1)
+            if (HttpContext.Session.GetInt32("user") != 1)
             {
                 return RedirectToAction("Signin", "Home");
             }
@@ -22,12 +23,12 @@ namespace project_.net.Controllers
             }
         }
 
-        
+
         public IActionResult restaurant_detail(int id)
         {
-            if (HttpContext.Session.GetInt32("user")!=1)
+            if (HttpContext.Session.GetInt32("user") != 1)
             {
-                return RedirectToAction("/Home/Signin");
+                return RedirectToAction("Signin", "Home");
 
             }
             else
@@ -36,38 +37,28 @@ namespace project_.net.Controllers
                 return View(restaurant);
 
             }
-         
+
         }
-        
+        [HttpGet]
+        public IActionResult book()
+        {
+            return View();
+        }
+
         public IActionResult Faker()
         {
-            if (HttpContext.Session.GetInt32("user")==1)
+            if (HttpContext.Session.GetInt32("user") == 1)
             {
                 FakeDataGenerator.Restaurants();
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                return RedirectToAction("/Home/Signin");
+                return RedirectToAction("Signin", "Home");
             }
         }
-        /*
-        public IActionResult ListeRestaurant()
-        {
-            var restaurants = getlist();
-
-        [HttpGet]
-        public IActionResult book()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult book(DateOnly date , int nbre)
-        {
-            return RedirectToRoute("/ProfileController/myReservations");
-        }
-
-
     }
-
 }
+
+
+
