@@ -23,7 +23,7 @@ namespace project_.net.Database
         }
         public Client getClientById(int id)
         {
-            Client? client = context.Client.Find(id);
+            Client client = context.Client.Find(id);
             return (client);
         }
         public void deleteClient(int id)

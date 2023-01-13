@@ -51,5 +51,17 @@ namespace project_.net.Controllers
                 return RedirectToAction("/Home/Signin");
             }
         }
-    } 
+        /*
+        public IActionResult ListeRestaurant()
+        {
+            var restaurants = getlist();
+
+        [HttpGet]
+        public IActionResult book()
+        {
+            return View();
+        }
+
+    }
+
 }

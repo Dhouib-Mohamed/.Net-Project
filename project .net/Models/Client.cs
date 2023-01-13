@@ -6,8 +6,8 @@ namespace project_.net.Models
         public class Client
         {
             [Key]
+            [Display(Name = "Id")]
             public int Id { get; private set; }
-
 
 
             [Required(ErrorMessage = "Please enter you full name")]
@@ -29,6 +29,7 @@ namespace project_.net.Models
 
         public Client()
         {
+            Id = 0;
             Name = "";
             this.email = "";
             password = "";
