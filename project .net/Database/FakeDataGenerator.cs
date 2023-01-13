@@ -16,15 +16,6 @@ namespace project_.net.Database
             }
         }
 
-        public static void Categories()
-        {
-            Context context = Context.getInstance();
-            for (int i = 0; i < 20; i++)
-            {
-                Category c = new Category(Faker.Name.Suffix());
-            }
-        }
-
         public static void Restaurants()
         {
             Context context = Context.getInstance();
