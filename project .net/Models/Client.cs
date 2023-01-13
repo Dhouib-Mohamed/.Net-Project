@@ -8,9 +8,6 @@ namespace project_.net.Models
             [Key]
             public int Id { get; private set; }
 
-        [Display(Name="ID")]
-        public int ID { get; set; }
-
 
 
             [Required(ErrorMessage = "Please enter you full name")]
@@ -18,7 +15,7 @@ namespace project_.net.Models
             public string Name { get; set; }
 
             [Required]
-            [RegularExpression(@"/^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$/gm", ErrorMessage = "E-mail id is not valid")]
+            [RegularExpression(@"^[a-zA-Z0-9_.-]+@+[a-zA-Z0-9-]+\.+[a-zA-Z0-9-]+", ErrorMessage = "E-mail id is not valid")]
             public string email { get; set; }
 
             [Required(ErrorMessage = "Please enter password")]
@@ -32,7 +29,6 @@ namespace project_.net.Models
 
         public Client()
         {
-            ID = 0;
             Name = "";
             this.email = "";
             password = "";

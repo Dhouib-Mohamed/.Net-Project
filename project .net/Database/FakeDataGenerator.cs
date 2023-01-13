@@ -32,7 +32,7 @@ namespace project_.net.Database
             {
                 Category c = new Category(Faker.Name.Suffix());
                 RestaurantRepository restaurantRepository = new RestaurantRepository();
-                Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg", Faker.RandomNumber.Next(5, 50));
+                Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/435px-Barbieri_-_ViaSophia25668.jpg", Faker.RandomNumber.Next(5, 50));
                 r.categories.Add(c);
                 context.Restaurant.Add(r);
                 context.SaveChanges();

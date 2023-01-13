@@ -18,7 +18,7 @@ namespace project_.net.Models
             categories = new List<Category>();
             Name= name;
             Localization=localization;
-            this.NbPlaces= nbPlaces;
+            NbPlaces= nbPlaces;
             this.image= image;
         }
     }
