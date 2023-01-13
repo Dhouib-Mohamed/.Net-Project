@@ -8,9 +8,12 @@
     <img class="card-img-top" src=@Model.image alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">@Model.Name</h5>
-        @* <p class="card-text">Category : @Model.category</p>*@
+        @foreach (var cate in Model.categories)
+        {
+            <p class="card-text">Category : @cate.Name </p>
+        }
+        @Html.ActionLink("réserver","book","Restaurant")
         
-        <a href="#" class="btn btn-primary">réserver</a>
         
     </div>
 </div>
