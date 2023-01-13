@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using project_.net.Models;
+﻿using project_.net.Models;
 using System.Xml;
 
 namespace project_.net.Database
@@ -22,6 +21,28 @@ namespace project_.net.Database
         {
             context.Client.Update(client);
             context.SaveChanges();
+        }
+
+        public bool SignUp(Client c)
+        {
+            if (context.Client.Where(client => client.email==c.email).ToList().Count==0)
+            {
+                add(c);
+                return true;
+            }
+
+            return false;
+        }
+        public int SignIn(Client c)
+        {
+            List<Client> clients = context.Client
+                .Where(client => (client.email == c.email && client.password == c.password)).ToList();
+            if (clients.Count!=0)
+            {
+                return clients[0].Id;
+            }
+
+            return -1;
         }
         public List<Client> getClients()
         {

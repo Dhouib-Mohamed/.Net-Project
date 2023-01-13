@@ -31,15 +31,16 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Signup(Client c)
         {
-            Debug.Write("hi");
             //insert to data base
-            HttpContext.Session.SetInt32("user", 1);
             ClientRepository repository = new ClientRepository();
-            repository.add(c);
-            Debug.Write(HttpContext.Session.GetInt32("user"));
-            HttpContext.Session.SetInt32("userId", c.Id);
+            bool res = repository.SignUp(c);
+            if (res)
+            {
+                HttpContext.Session.SetInt32("user", 1);
+                HttpContext.Session.SetInt32("userId", c.Id);
+            }
             // redirect to /Client/index
-            return RedirectToAction(nameof(Index),nameof(Restaurant));
+            return RedirectToAction("Index","Restaurant");
         }
         public IActionResult Signin()
         {
@@ -57,17 +58,15 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Signin(Client c)
         {
-            Context context = Context.Instatiate_Context();
-            IEnumerable<Client> clients =
-                (IEnumerable<Client>)context.Client.Where(e => e.email == c.email && e.password == c.password);
-            if (clients.Count() == 0)
+            ClientRepository repository = new ClientRepository();
+            int res = repository.SignIn(c);
+            if (res!=-1)
             {
-                ViewBag.NotFound = true;
+                HttpContext.Session.SetInt32("user", 1);
+                HttpContext.Session.SetInt32("userId", c.Id);
             }
-            
-            HttpContext.Session.SetInt32("user", 1);
-            HttpContext.Session.SetInt32("userId", c.Id);
-            return RedirectToAction(nameof(Index));
+            // redirect to /Client/index
+            return RedirectToAction("Index","Restaurant");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
