@@ -32,6 +32,17 @@ namespace project_.net.Database
             context.Client.Remove(client);
             context.SaveChanges();
         }
+        public void addReservation(int clientId,int restaurantId,DateTime date,int nb)
+        {
+            Client client = getClientById(clientId);
+            RestaurantRepository restaurantRepository= new RestaurantRepository();
+            Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
+            Reservation reservation = new Reservation(date,nb);
+            reservation.client = client;
+            reservation.restaurant=restaurant;
+            context.Reservation.Add(reservation);
+            context.SaveChanges();
+        }
 
     }
 }
