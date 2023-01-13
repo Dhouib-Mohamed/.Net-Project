@@ -1,30 +1,31 @@
-﻿@using (Html.BeginForm("CreateRestaurant", "Admin", FormMethod.Post))
+﻿@model Restaurant
+@Url.
+@using (Html.BeginForm("EditRestaurant", "Admin",new {id=@Model.Id}, FormMethod.Post))
 {
     <div class="container register" style="height:2000px">
         <div class="row">
             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h3 class="register-heading">Create Restaurant</h3>
+                <h3 class="register-heading">Restaurant Details</h3>
                 <div class="row register-form">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name ="Name" class="form-control">
+                            <input type="text" name ="Name" class="form-control" value="@Model.Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" name ="Localization" class="form-control">
+                            <input type="text" name ="Localization" class="form-control" value="@Model.Localization">
                         </div>
                         <div class="form-group">
                             <input type="file" name="Image" >
                         </div>
                         <div class="form-group">
-                            <input type="number" name ="Places" class="form-control">
+                            <input type="number" name ="Places" class="form-control" value="@Model.NbPlaces">
                         </div>
                         <div class="col-md-6">
-                            <input type="submit" class="btnLogin" value="Create Restaurant" />
+                            <input type="submit" class="btnLogin" value="Edit Restaurant" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
+    </div>
 }

@@ -6,11 +6,25 @@ namespace project_.net.Controllers
     {
         public IActionResult ProfileDetails()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("user") != 1)
+            {
+                return RedirectToAction("/Home/Signin");
+            }
+            else
+            {
+                return View();
+            }
         }
         public IActionResult History()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("user")!=1)
+            {
+                return RedirectToAction("Signin","Home");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult myReservations()
