@@ -37,11 +37,17 @@ namespace project_.net.Controllers
         }
 
 
-
-        public IActionResult Edit()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, IFormCollection collection)
         {
-            ViewData["NavMenuPage"] = "profile";
-            return View();
+            Client c = rep1.getClientById(id);
+            c.Name = collection["Name"];
+            c.email = collection["email"];
+            c.password = collection["password"];
+            c.phoneNumber = collection["phone"];
+            rep1.editClient(c);
+            return RedirectToAction(nameof(ProfileDetails));
         }
     }
 }

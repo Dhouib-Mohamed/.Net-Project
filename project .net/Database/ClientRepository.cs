@@ -17,6 +17,11 @@ namespace project_.net.Database
             context.SaveChanges();
 
         }
+        public void editClient(Client client)
+        {
+            context.Client.Update(client);
+            context.SaveChanges();
+        }
 
         public bool SignUp(Client c)
         {
