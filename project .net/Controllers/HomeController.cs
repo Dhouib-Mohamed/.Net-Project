@@ -32,19 +32,26 @@ namespace project_.net.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Signin(Client c)
         {
             Context context = Context.Instatiate_Context();
-            IEnumerable<Client> clients = (IEnumerable<Client>)context.Client.Where(e => e.email == c.email && e.password == c.password);
-            if (clients.Count()==0) { ViewBag.NotFound = true; }
+            IEnumerable<Client> clients =
+                (IEnumerable<Client>)context.Client.Where(e => e.email == c.email && e.password == c.password);
+            if (clients.Count() == 0)
+            {
+                ViewBag.NotFound = true;
+            }
+
             return View();
-      
         }
-  public IActionResult Privacy()
+
+        public IActionResult Privacy()
         {
             return View();
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

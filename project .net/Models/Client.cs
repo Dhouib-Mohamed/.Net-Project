@@ -6,8 +6,11 @@ namespace project_.net.Models
         public class Client
         {
             [Key]
+            public int Id { get; private set; }
+
         [Display(Name="ID")]
         public int ID { get; set; }
+
 
 
             [Required(ErrorMessage = "Please enter you full name")]

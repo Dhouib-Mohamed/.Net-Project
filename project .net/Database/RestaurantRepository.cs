@@ -1,6 +1,5 @@
 ﻿using project_.net.Database;
 using project_.net.Models;
-using System;
 
 /// <summary>
 /// Summary description for Class1
@@ -28,14 +27,18 @@ public class RestaurantRepository
 	{
 		return context.Restaurant.ToList();
 	}
-    public Restaurant getRestaurantByid(int id)
+    public Restaurant getRestaurantById(int id)
     {
-       Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.ID == id);
-        return (restaurant);
+	    Restaurant? restaurant = context.Restaurant.Find(id);
+        return restaurant;
     }
     public void deleteRestaurant(int id)
     {
-        Restaurant restaurant = getRestaurantByid(id);
+	    Restaurant restaurant = getRestaurantById(id);
+	    Console.Write(restaurant.categories);
+	    restaurant.categories.ForEach((category => context.Category.Remove(category)
+			    ));
+	    context.SaveChanges();
         context.Restaurant.Remove(restaurant);
         context.SaveChanges();
     }

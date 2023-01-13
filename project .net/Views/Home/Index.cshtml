@@ -1,5 +1,11 @@
 ﻿@model List<Client>
 
+
+
+@foreach (var c in Model)
+{
+    <p class="">@c.Name , , @c.email</p>
+}
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -17,3 +23,4 @@
         </div>
     </div>
 </div>
+>>>>>>> d3f02fcb80ae22f9edd1b8bded7c4feb520c7864

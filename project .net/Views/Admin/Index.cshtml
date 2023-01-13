@@ -1,10 +1,59 @@
-﻿<h1>
-    Restaurants
-</h1>
-@foreach (Restaurant r in ViewBag.Restaurants)
-{
-   <p>@r.Name , , @r.NbPlaces</p>
-}
+﻿<div class="row justify-content-around">
+    <h1 class="col">
+        Restaurants
+    </h1>
+    <td class="col"><a href="Admin/AddRestaurant"><button type="button" class="btn btn-primary btn-sm" >Add Restaurant</button></a></td>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Localization</th>
+        <th scope="col">Nombre of places</th>
+        <th scope="col">Categories</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Restaurant r in ViewBag.Restaurants)
+    {
+        <tr>
+            <th scope="row">@r.Id</th>
+            <td>@r.Name</td>
+            <td>@r.Localization</td>
+            <td>@r.NbPlaces</td>
+            <td>@r.categories.Count</td>
+            <td><a href="Admin/DeleteRestaurant/@r.Id"><button type="button" class="btn btn-danger btn-sm">Delete Restaurant</button></a></td>
+        </tr>
+    }
+
+    </tbody>
+</table>
 <h1>
     Clients
 </h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+@foreach (Client c in ViewBag.Clients)
+        {
+    <tr>
+          <th scope="row">@c.Id</th>
+          <td>@c.Name</td>
+          <td>@c.email</td>
+        <td>@c.phoneNumber</td>
+        <td><a href="Admin/DeleteClient/@c.Id"><button type="button" class="btn btn-danger btn-sm">Delete Client</button></a></td>
+        </tr>
+        }
+
+  </tbody>
+</table>

@@ -17,6 +17,8 @@ namespace project_.net.Controllers
            // ViewBag.Clients = clients;
             ViewBag.Restaurants = restaurants;
             return View();
+
+
         }
 
         // POST: AdminController/Create
@@ -24,14 +26,7 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRestaurant(IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // POST: AdminController/Edit/5
@@ -39,19 +34,10 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditRestaurant(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
-        // POST: AdminController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult DeleteRestaurant(int id, IFormCollection collection)
         {
             restaurantRepository.deleteRestaurant(id);
