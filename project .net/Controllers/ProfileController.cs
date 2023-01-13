@@ -12,5 +12,11 @@ namespace project_.net.Controllers
         {
             return View();
         }
+
+        public IActionResult myReservations()
+        {
+            return View();
+        }
+
     }
 }

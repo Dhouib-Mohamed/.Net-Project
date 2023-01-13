@@ -9,25 +9,26 @@
 
 @using (Html.BeginForm("book", "Restaurant", FormMethod.Post))
 {
-    <div class="container register" style="height:2000px">
-        <div class="row">
-            <div class="col-md-3 register-left">
-                <img src="" alt="logo" />
+    <div class="container register" style="height:1000px">
+        <div class="row justify-content-around">
+            <div class="col-6 register-right">
+                <img src="https://th.bing.com/th/id/OIP.JTP6LBby17V-rMBE2q6fZwHaE9?pid=ImgDet&rs=1" alt="logo" height="300px" />
                 <h3 style="height:30px">Welcome To Our Restaurant </h3>
             </div>
-            <div class="col-md-9 ">
+            <div class="col-6 " >
                
                 <div class="tab-content" id="myTabContent">
                    
                         <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <h1>DATE</h1>
+                            <div class="col">
+                                <div class="row form-group">
+                                    <p style="font-size: 20px">DATE</p>
                                     @Html.TextBoxFor(e => e.date, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(e => e.date)
                                 </div>
-                                <div class="form-group">
-                                    <h1>NOMBRE DE PLACE</h1>
+                                <div class="row form-group">
+                                    <p style="font-size: 20px">NOMBRE DE PLACE</p>
+                                  
                                     @Html.TextBoxFor(e => e.nbPlacesRes, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(e => e.nbPlacesRes)
                                 </div>
@@ -36,6 +37,7 @@
                                 <div style="height:30px"></div>
                                 <input type="submit" class="btnRegister" value="valider" />
                             </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
 
         <script type="text/javascript">
             $(function () {
-                var msg = '@ViewData["result"]';
+                var msg = '@ViewData["Valider"]';
                 if (msg == '1') {
                     alert("you have made reservation Successfully");
                     window.location.href = "@Url.Action("book", "Restaurant")";
