@@ -19,8 +19,8 @@ namespace project_.net.Controllers
         
         public IActionResult restaurant_detail(int id)
         {
-          
-         Restaurant restaurant = repository.getRestaurantById(id);
+
+            Restaurant restaurant = repository.getRestaurantById(id);
          return View(restaurant);
         }
         
