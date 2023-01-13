@@ -1,4 +1,5 @@
-﻿using project_.net.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using project_.net.Models;
 using System.Xml;
 
 namespace project_.net.Database
@@ -16,6 +17,11 @@ namespace project_.net.Database
             context.Client.Add(client);
             context.SaveChanges();
 
+        }
+        public void editClient(Client client)
+        {
+            context.Client.Update(client);
+            context.SaveChanges();
         }
         public List<Client> getClients()
         {
