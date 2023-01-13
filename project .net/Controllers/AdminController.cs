@@ -13,8 +13,8 @@ namespace project_.net.Controllers
         public ActionResult Index()
         {
             List<Restaurant> restaurants = restaurantRepository.getRestaurants();
-            List<Client> clients = clientRepository.getClients();
-            ViewBag.Clients = clients;
+           // List<Client> clients = clientRepository.getClients();
+           // ViewBag.Clients = clients;
             ViewBag.Restaurants = restaurants;
             return View();
         }

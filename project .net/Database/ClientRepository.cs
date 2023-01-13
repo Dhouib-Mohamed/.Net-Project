@@ -17,13 +17,13 @@ namespace project_.net.Database
             context.SaveChanges();
 
         }
-        public List<Client> getClients()
-        {
-            return context.Client.ToList();
-        }
+        //public List<Client> getClients()
+       // {
+         //   return context.Client.ToList();
+       // }
         public Client getClientByid(int id)
         {
-            Client client = (Client)context.Client.Where(r => r.Id == id);
+            Client client = (Client)context.Client.Where(r => r.ID == id);
             return (client);
         }
         public void deleteClient(int id)

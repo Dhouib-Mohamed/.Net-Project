@@ -30,7 +30,7 @@ public class RestaurantRepository
 	}
     public Restaurant getRestaurantByid(int id)
     {
-       Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.Id == id);
+       Restaurant restaurant = (Restaurant)context.Restaurant.Where(r => r.ID == id);
         return (restaurant);
     }
     public void deleteRestaurant(int id)

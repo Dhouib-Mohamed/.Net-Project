@@ -6,9 +6,14 @@ namespace project_.net.Controllers
     {
         public IActionResult ProfileDetails()
         {
+            
             return View();
         }
         public IActionResult History()
+        {
+            return View();
+        }
+        public IActionResult Edit()
         {
             return View();
         }
