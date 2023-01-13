@@ -12,14 +12,9 @@ namespace project_.net.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("user")!=1)
-            {
-                return RedirectToAction(nameof(Signin));
-            }
-            else
-            {
-                return View();
-            }
+            
+            return View();
+            
         }
         public IActionResult Signup()
         {
