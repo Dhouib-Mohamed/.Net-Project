@@ -31,7 +31,7 @@ namespace project_.net.Controllers
             }
             else
             {
-            Reservation r = rep2.getReservationByClientId(1);
+            var r = rep2.getReservationsByClientId(HttpContext.Session.GetInt32("userId") ?? -1);
             return View(r);
             }
         }
