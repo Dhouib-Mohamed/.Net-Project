@@ -6,12 +6,12 @@
 
 
 
-<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControlsNoTouching" class="carousel slide align-content-center" data-bs-ride="carousel">
     <div class="carousel-inner">
         @for (int i = 0 ; i<Model.Count ; i++)
         {
             if (i==0) {
-            <div class="carousel-item active">
+            <div class="carousel-item active ">
                     <img src=@Model[i].image alt=@Model[i].Name>
             </div>}
             else
@@ -53,12 +53,12 @@
 *@ 
 <div class="row">
     @foreach (var r in Model){
-        <div class="col-sm-3">
-            <div class="card">
+        <div class="col-sm-3 p-3" >
+            <div class="card align-content-around" style="height: 400px;">
+                <img class="card-img-top" src=@r.image alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">@r.Name</h5>
-                    <img src=@r.image alt=@r.Name class="card-img">
-                    @Html.ActionLink("detail","restaurant_detail","Restaurant",new {Id=@r.Id})
+                    <a href="/Restaurant/restaurant_detail/@r.Id"><button class="btn btn-primary"> Detail</button> </a>
                 </div>
             </div>
         </div>
