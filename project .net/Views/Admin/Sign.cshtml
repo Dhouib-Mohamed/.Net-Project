@@ -1,0 +1,23 @@
+﻿@model dynamic
+
+    @using (Html.BeginForm("Sign", "Admin", FormMethod.Post))
+    {
+        <div class="container register" style="height:2000px">
+            <div class="row">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Create Restaurant</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name ="code" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" class="btnLogin" value="Connect" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    }

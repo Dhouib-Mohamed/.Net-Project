@@ -15,7 +15,7 @@ namespace project_.net.Models
             public string Name { get; set; }
 
             [Required]
-            [RegularExpression(@"/^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$/gm", ErrorMessage = "E-mail id is not valid")]
+            [RegularExpression(@"^[a-zA-Z0-9_.-]+@+[a-zA-Z0-9-]+\.+[a-zA-Z0-9-]+", ErrorMessage = "E-mail id is not valid")]
             public string email { get; set; }
 
             [Required(ErrorMessage = "Please enter password")]

@@ -6,26 +6,36 @@ using project_.net.Models;
 /// </summary>
 public class RestaurantRepository
 {
-	Context context=Context.getInstance();
+	Context _context;
 	public RestaurantRepository()
 	{
-		context = Context.getInstance();
+		_context = Context.getInstance();
 
     }
 	public void addRestaurant(Restaurant restaurant)
 	{
-		context.Restaurant.Add(restaurant);
-		context.SaveChanges();
+		_context.Restaurant.Add(restaurant);
+		_context.SaveChanges();
+	}
+	public void editRestaurant(Restaurant restaurant)
+	{
+		_context.Restaurant.Update(restaurant);
+		_context.SaveChanges();
+	}
+
+	public List<Category> getCategories()
+	{
+		return _context.Category.ToList();
 	}
     public void addCategory(Category category)
     {
-        context.Category.Add(category);
-        context.SaveChanges();
+        _context.Category.Add(category);
+        _context.SaveChanges();
 
     }
     public List<Restaurant> getRestaurants()
 	{
-		return context.Restaurant.ToList();
+		return _context.Restaurant.ToList();
 	}
     public Restaurant getRestaurantById(int id)
     {
@@ -36,10 +46,11 @@ public class RestaurantRepository
     {
 	    Restaurant restaurant = getRestaurantById(id);
 	    Console.Write(restaurant.categories);
-	    restaurant.categories.ForEach((category => context.Category.Remove(category)
+	    restaurant.categories.ForEach((category => _context.Category.Remove(category)
 			    ));
-	    context.SaveChanges();
-        context.Restaurant.Remove(restaurant);
-        context.SaveChanges();
+	    _context.SaveChanges();
+        _context.Restaurant.Remove(restaurant);
+        _context.SaveChanges();
     }
+    
 }

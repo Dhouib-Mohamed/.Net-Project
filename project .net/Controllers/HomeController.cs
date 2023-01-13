@@ -9,31 +9,57 @@ namespace project_.net.Controllers
     public class HomeController : Controller
     {
         ClientRepository clientRepository = new ClientRepository();
+
         public IActionResult Index()
         {
-           // List<Client> clients = clientRepository.getClients();
-            return View();
+            if (HttpContext.Session.GetInt32("user")!=1)
+            {
+                return RedirectToAction(nameof(Signin));
+            }
+            else
+            {
+                return View();
+            }
         }
         public IActionResult Signup()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("user")!=1)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));   
+            }
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Signup(Client c)
         {
+            Debug.Write("hi");
             //insert to data base
-            Context context = Context.Instatiate_Context();
+            HttpContext.Session.SetInt32("user", 1);
             ClientRepository repository = new ClientRepository();
             repository.add(c);
+            Debug.Write(HttpContext.Session.GetInt32("user"));
+            HttpContext.Session.SetInt32("userId", c.Id);
             // redirect to /Client/index
-            return View();
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult Signin()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("user")!=1)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Signin(Client c)
         {
             Context context = Context.Instatiate_Context();
@@ -43,13 +69,10 @@ namespace project_.net.Controllers
             {
                 ViewBag.NotFound = true;
             }
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            
+            HttpContext.Session.SetInt32("user", 1);
+            HttpContext.Session.SetInt32("userId", c.Id);
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
