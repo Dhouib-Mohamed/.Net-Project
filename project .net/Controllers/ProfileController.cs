@@ -11,17 +11,16 @@ namespace project_.net.Controllers
         {
             if (HttpContext.Session.GetInt32("user") != 1)
             {
-                return RedirectToAction("/Home/Signin");
+                return RedirectToAction("Signin","Home");
             }
             else
             {
-                return View();
+                ViewData["NavMenuPage"] = "profile";
+                Client c = rep1.getClientById(1);
+                return View(c);
             }
-        }
-            ViewData["NavMenuPage"] = "profile";
-            Client c = rep1.getClientById(1);
-            return View(c);
-        }
+        
+    }
         ReservationRepository rep2 = new ReservationRepository();
         public IActionResult History()
         {
@@ -39,17 +38,11 @@ namespace project_.net.Controllers
         {
             return View();
         }
-
-    }
-}
-            Reservation r = rep2.getReservationByClientId(1);
-            ViewData["NavMenuPage"] = "profile";
-            return View(r);
-        }
         public IActionResult Edit()
         {
             ViewData["NavMenuPage"] = "profile";
             return View();
         }
+
     }
 }
