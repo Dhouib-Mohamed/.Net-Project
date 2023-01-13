@@ -21,6 +21,19 @@ namespace project_.net.Controllers
                 return View(restaurants);
             }
         }
+        [HttpPost]
+        public IActionResult RestaurantsByName(IFormCollection collection)
+        {
+            if (HttpContext.Session.GetInt32("user") != 1)
+            {
+                return RedirectToAction("Signin", "Home");
+            }
+            else
+            {
+                var restaurants = repository.RestaurantListByName(collection["search"]);
+                return View(restaurants);
+            }
+        }
 
 
         public IActionResult restaurant_detail(int id)
