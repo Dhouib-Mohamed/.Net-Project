@@ -9,6 +9,7 @@ namespace project_.net.Controllers
         ClientRepository rep1 = new ClientRepository();
         public IActionResult ProfileDetails()
         {
+            ViewData["NavMenuPage"] = "profile";
             if (HttpContext.Session.GetInt32("user") != 1)
             {
                 return RedirectToAction("Signin","Home");
@@ -24,25 +25,24 @@ namespace project_.net.Controllers
         ReservationRepository rep2 = new ReservationRepository();
         public IActionResult History()
         {
-            if (HttpContext.Session.GetInt32("user")!=1)
+            ViewData["NavMenuPage"] = "profile";
+        if (HttpContext.Session.GetInt32("user")!=1)
             {
                 return RedirectToAction("Signin","Home");
             }
             else
             {
-                return View();
+            Reservation r = rep2.getReservationByClientId(1);
+            return View(r);
             }
         }
 
-        public IActionResult myReservations()
-        {
-            return View();
-        }
+
+
         public IActionResult Edit()
         {
             ViewData["NavMenuPage"] = "profile";
             return View();
         }
-
     }
 }

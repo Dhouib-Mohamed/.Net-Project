@@ -9,7 +9,6 @@ namespace project_.net.Controllers
     public class RestaurantController : Controller
     {
         RestaurantRepository repository = new RestaurantRepository();
-
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("user") != 1)
@@ -28,7 +27,7 @@ namespace project_.net.Controllers
         {
             if (HttpContext.Session.GetInt32("user") != 1)
             {
-                return RedirectToAction("Signin","Home");
+                return RedirectToAction("/Home/Signin");
 
             }
             else
@@ -49,7 +48,7 @@ namespace project_.net.Controllers
             }
             else
             {
-                return RedirectToAction("Signin","Home");
+                return RedirectToAction("/Home/Signin");
             }
         }
         [HttpGet]
@@ -72,4 +71,4 @@ public IActionResult book()
 
 }
 
-}*/
+}
