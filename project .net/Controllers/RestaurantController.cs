@@ -51,6 +51,7 @@ namespace project_.net.Controllers
                 return RedirectToAction("/Home/Signin");
             }
         }
+
         /*
         public IActionResult ListeRestaurant()
         {
@@ -61,7 +62,7 @@ namespace project_.net.Controllers
         {
             return View();
         }
-
+ */
     }
 
 }

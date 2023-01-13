@@ -39,7 +39,7 @@ public class RestaurantRepository
 	}
     public Restaurant getRestaurantById(int id)
     {
-	    Restaurant restaurant = context.Restaurant.Find(id);
+	    Restaurant restaurant = _context.Restaurant.Find(id);
         return restaurant;
     }
     public void deleteRestaurant(int id)
