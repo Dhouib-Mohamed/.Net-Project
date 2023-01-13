@@ -16,9 +16,10 @@ namespace project_.net.Controllers
             return View(restaurants);
         }
 
+        
         public IActionResult restaurant_detail(int id)
         {
-          //  RestaurantRepository repository = new RestaurantRepository();
+          
          Restaurant restaurant = repository.getRestaurantById(id);
          return View(restaurant);
         }
@@ -28,43 +29,13 @@ namespace project_.net.Controllers
             FakeDataGenerator.Restaurants();
             return RedirectToAction(nameof(Index));
         }
-        /*
-        public IActionResult ListeRestaurant()
-        {
-            var restaurants = getlist();
 
-            return View(restaurants);
+        [HttpGet]
+        public IActionResult book()
+        {
+            return View();
         }
 
-        public IActionResult ListePlat(int id)
-        {
-            var restaurantbyid = getlist().SingleOrDefault(r => r.Id == id);
-            if (restaurantbyid == null | restaurantbyid.Plats == null) 
-            {
-                return Content(
-                    "<script> alert('restaurant non trouvé') </script>");
-            }
-            else
-            { return View(restaurantbyid);
-               
-            }
-        }
-
-
-        public IEnumerable<Restaurant> getlist()
-        {
-            
-                Restaurant restaurant1 = new Restaurant()
-                    { Id = 1, Localisation = "manar", Name = "rest1", speciality = "tunisienne" , Plats = new List<Plat>(){ new Plat() { plat_Id = 1, plat_name = "pizza", ingrediants = "ddDdscdsc" } ,
-                            new Plat() { plat_Id = 2, plat_name = "pizza", ingrediants = "ddDdscdsc" }
-
-                    }};
-                Restaurant restaurant2 = new Restaurant()
-                    { Id = 2, Localisation = "sokra", Name = "rest2", speciality = "italienne" };
-                List<Restaurant> restaurants = new List<Restaurant>() { restaurant1, restaurant2 };
-                return restaurants;
-            }
-        */
     }
 
 }

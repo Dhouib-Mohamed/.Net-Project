@@ -16,23 +16,13 @@ namespace project_.net.Database
             }
         }
 
-        public static void Categories()
-        {
-            Context context = Context.getInstance();
-            for (int i = 0; i < 20; i++)
-            {
-                Category c = new Category(Faker.Name.Suffix());
-            }
-        }
-
         public static void Restaurants()
         {
             Context context = Context.getInstance();
             for (int i = 0; i < 20; i++)
             {
                 Category c = new Category(Faker.Name.Suffix());
-                RestaurantRepository restaurantRepository = new RestaurantRepository();
-                Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg", Faker.RandomNumber.Next(5, 50));
+                Restaurant r = new Restaurant( Faker.Company.Name(), Faker.Address.StreetName(), "https://cdn2.vectorstock.com/i/1000x1000/23/36/lettering-hi-vector-26522336.jpg", Faker.RandomNumber.Next(5, 50));
                 r.categories.Add(c);
                 context.Restaurant.Add(r);
                 context.SaveChanges();
