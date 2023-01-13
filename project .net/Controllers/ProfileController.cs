@@ -34,6 +34,12 @@ namespace project_.net.Controllers
                 return View();
             }
         }
+
+        public IActionResult myReservations()
+        {
+            return View();
+        }
+
     }
 }
             Reservation r = rep2.getReservationByClientId(1);

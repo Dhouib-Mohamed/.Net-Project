@@ -61,6 +61,12 @@ namespace project_.net.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult book(DateOnly date , int nbre)
+        {
+            return RedirectToRoute("/ProfileController/myReservations");
+        }
+
 
     }
 
