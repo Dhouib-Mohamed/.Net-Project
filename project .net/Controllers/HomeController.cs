@@ -38,9 +38,11 @@ namespace project_.net.Controllers
             {
                 HttpContext.Session.SetInt32("user", 1);
                 HttpContext.Session.SetInt32("userId", c.Id);
+                return RedirectToAction("Index","Restaurant");
             }
             // redirect to /Client/index
-            return RedirectToAction("Index","Restaurant");
+            return View();
+
         }
         public IActionResult Signin()
         {
@@ -64,9 +66,10 @@ namespace project_.net.Controllers
             {
                 HttpContext.Session.SetInt32("user", 1);
                 HttpContext.Session.SetInt32("userId", c.Id);
+                return RedirectToAction("Index","Restaurant");
             }
             // redirect to /Client/index
-            return RedirectToAction("Index","Restaurant");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
