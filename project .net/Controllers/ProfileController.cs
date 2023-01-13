@@ -6,6 +6,8 @@ namespace project_.net.Controllers
 {
     public class ProfileController : Controller
     {
+
+
         ClientRepository rep1 = new ClientRepository();
         public IActionResult ProfileDetails()
         {
@@ -22,6 +24,7 @@ namespace project_.net.Controllers
         }
            
         
+
         ReservationRepository rep2 = new ReservationRepository();
         public IActionResult History()
         {
@@ -38,14 +41,14 @@ namespace project_.net.Controllers
         }
 
 
-    }
-}
-            
-        }
+
         public IActionResult Edit()
         {
             ViewData["NavMenuPage"] = "profile";
             return View();
         }
+
     }
 }
+            
+       
