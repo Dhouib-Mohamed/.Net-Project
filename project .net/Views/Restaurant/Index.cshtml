@@ -6,18 +6,18 @@
 
 
 
-<div id="carouselExampleControlsNoTouching" class="carousel slide align-content-center" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide w-50 h-50" style="margin: auto;" data-bs-ride="carousel">
     <div class="carousel-inner">
         @for (int i = 0 ; i<Model.Count ; i++)
         {
             if (i==0) {
             <div class="carousel-item active ">
-                    <img src=@Model[i].image alt=@Model[i].Name>
+                    <img src=@Model[i].image alt=@Model[i].Name class="w-100">
             </div>}
             else
             {
                 <div class="carousel-item">
-                    <img src=@Model[i].image alt=@Model[i].Name>
+                    <img src=@Model[i].image alt=@Model[i].Name  class="w-100">
                 </div>
             }
         }
