@@ -15,6 +15,7 @@ namespace project_.net.Controllers
             }
             else
             {
+                ViewData["NavMenuPage"] = "connected";
                 var restaurants = repository.getRestaurants();
                 return View(restaurants);
             }
@@ -28,6 +29,7 @@ namespace project_.net.Controllers
             }
             else
             {
+                ViewData["NavMenuPage"] = "connected";
                 var restaurants = repository.RestaurantListByName(collection["search"]);
                 return View(restaurants);
             }
@@ -43,6 +45,7 @@ namespace project_.net.Controllers
             }
             else
             {
+                ViewData["NavMenuPage"] = "connected";
                 Restaurant restaurant = repository.getRestaurantById(id);
                 return View(restaurant);
 
@@ -65,6 +68,7 @@ namespace project_.net.Controllers
         [HttpGet]
         public IActionResult book(int id)
         {
+            ViewData["NavMenuPage"] = "connected";
             ViewBag.id = id;
             return View(id);
         }

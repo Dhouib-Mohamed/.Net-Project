@@ -15,7 +15,7 @@ namespace project_.net.Controllers
             }
             else
             {
-                ViewData["NavMenuPage"] = "profile";
+                ViewData["NavMenuPage"] = "connected";
                 Client c = rep1.getClientById(HttpContext.Session.GetInt32("userId")??-1);
                 return View(c);
             }
@@ -24,13 +24,13 @@ namespace project_.net.Controllers
         ReservationRepository rep2 = new ReservationRepository();
         public IActionResult History()
         {
-            ViewData["NavMenuPage"] = "profile";
-        if (HttpContext.Session.GetInt32("user")!=1)
+            if (HttpContext.Session.GetInt32("user")!=1)
             {
                 return RedirectToAction("Signin","Home");
             }
             else
-            {
+            {            ViewData["NavMenuPage"] = "connected";
+
             var r = rep2.getReservationsByClientId(HttpContext.Session.GetInt32("userId") ?? -1);
             return View(r);
             }

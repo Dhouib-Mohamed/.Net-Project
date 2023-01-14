@@ -12,14 +12,22 @@ namespace project_.net.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
-            
+            if (HttpContext.Session.GetInt32("user") != 1)
+            {
+                ViewData["NavMenuPage"] = "disconnected";
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index),nameof(Restaurant));
+            }
         }
         public IActionResult Signup()
         {
             if (HttpContext.Session.GetInt32("user")!=1)
             {
+                ViewData["NavMenuPage"] = "disconnected";
+
                 return View();
             }
             else
@@ -48,6 +56,7 @@ namespace project_.net.Controllers
         {
             if (HttpContext.Session.GetInt32("user")!=1)
             {
+                ViewData["NavMenuPage"] = "disconnected";
                 return View();
             }
             else
