@@ -85,6 +85,12 @@ namespace project_.net.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Signout()
+        {
+            HttpContext.Session.SetInt32("user", 0);
+            HttpContext.Session.SetInt32("userId", -1);
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Faker()
         {
             FakeDataGenerator.Clients();

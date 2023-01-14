@@ -87,6 +87,11 @@ namespace project_.net.Controllers
             _restaurantRepository.editRestaurant(restaurant);
             return RedirectToAction(nameof(Index),new {success="Restaurant Changed Successfully"});
         }
+        public IActionResult Signout()
+        {
+            HttpContext.Session.SetInt32("admin", 0);
+            return RedirectToAction(nameof(Index));
+        }
         public ActionResult RestaurantDetails(int id)
         {
             if (HttpContext.Session.GetInt32("admin")!=1)
