@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using project_.net.Database;
 using project_.net.Models;
 
