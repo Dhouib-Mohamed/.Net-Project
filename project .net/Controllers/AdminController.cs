@@ -34,8 +34,7 @@ namespace project_.net.Controllers
             ViewBag.error = error;
             if (HttpContext.Session.GetInt32("admin") != 1)
             {
-                ViewData["NavMenuPage"] = "Admin";
-
+                ViewData["NavMenuPage"] = "default";
                 return View();
             }
             else {

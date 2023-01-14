@@ -13,6 +13,13 @@ public class NavMenuViewComponent : ViewComponent
         Dictionary<string, string> links = null;
         switch (pageName)
         {
+            case "default":
+                links = new Dictionary<string, string> {
+                    { "", "" },
+                };
+
+                break;
+
             case "Admin":
                 links = new Dictionary<string, string> {
                     { "signout", "/Admin/Signout" },
