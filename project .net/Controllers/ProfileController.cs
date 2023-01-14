@@ -26,7 +26,6 @@ namespace project_.net.Controllers
         public IActionResult History(String success)
         {
             ViewBag.success = success;
-            ViewData["NavMenuPage"] = "profile";
         if (HttpContext.Session.GetInt32("user")!=1)
             {
                 return RedirectToAction("Signin","Home");
