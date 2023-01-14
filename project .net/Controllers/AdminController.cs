@@ -20,7 +20,7 @@ namespace project_.net.Controllers
             }
             else
             {
-                ViewData["NavMenuPage"] = "admin";
+                ViewData["NavMenuPage"] = "Admin";
 
                 List<Restaurant> restaurants = _restaurantRepository.getRestaurants();
                 List<Client> clients = _clientRepository.getClients();
@@ -34,7 +34,7 @@ namespace project_.net.Controllers
             ViewBag.error = error;
             if (HttpContext.Session.GetInt32("admin") != 1)
             {
-                ViewData["NavMenuPage"] = "admin";
+                ViewData["NavMenuPage"] = "Admin";
 
                 return View();
             }
@@ -76,7 +76,7 @@ namespace project_.net.Controllers
             }
             else
             {
-                ViewData["NavMenuPage"] = "admin";
+                ViewData["NavMenuPage"] = "Admin";
                 return View();   
             }
         }
