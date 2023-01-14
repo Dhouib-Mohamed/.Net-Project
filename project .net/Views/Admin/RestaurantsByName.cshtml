@@ -1,0 +1,46 @@
+﻿@model List<Restaurant>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+<div class="row justify-content-around w-100">
+    <h1 class="col-8">
+        Restaurants
+    </h1>
+    <div class="col-4"><a href="Admin/CreateRestaurant"><button type="button" class="btn btn-primary btn-sm">Add Restaurant</button></a></div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Localization</th>
+            <th scope="col">Nombre of places</th>
+            <th scope="col">Categories</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Restaurant r in Model)
+        {
+            <tr>
+                <th scope="row">@r.Id</th>
+                <td>
+                    <a href="Admin/RestaurantDetails/@r.Id">
+                        @r.Name
+                    </a>
+                </td>
+                <td>@r.Localization</td>
+                <td>@r.NbPlaces</td>
+                <td>@r.categories.Count</td>
+                <td><a href="Admin/DeleteRestaurant/@r.Id"><button type="button" class="btn btn-danger btn-sm">Delete Restaurant</button></a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<h1>
