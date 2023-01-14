@@ -3,16 +3,13 @@
 
 
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<nav class="navbar fixed-top  navbar-expand-sm  navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
                 <div> 
                     <img src="https://i.pinimg.com/564x/2a/c5/60/2ac560c628f1577e6db6ade2117ce828.jpg" style="height:35px" />
                 <a class="navbar-brand" asp-area="" asp-controller="Restaurant" asp-action="index" style="text-decoration:none;color:black">MyRestaurant.net</a>
         </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                
         <div class=" row">
             @foreach (var link in Model)
          {
