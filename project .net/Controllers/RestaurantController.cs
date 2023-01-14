@@ -3,10 +3,26 @@ using project_.net.Database;
 using project_.net.Models;
 
 namespace project_.net.Controllers
+
 {
+   
     public class RestaurantController : Controller
     {
+        public List<Category> category = new List<Category>(){ new Category("americaine") , new Category("Française") , new Category("Tunisienne") , new Category("italienne") , new Category("lobneniya") };
+
+
+        public List<Restaurant> RestaurantData = new List<Restaurant>()
+        {
+            new Restaurant("PastaCosi","Lac","https://media-cdn.tripadvisor.com/media/photo-s/15/5c/32/63/pasta-fruits-de-mer.jpg" , 40),
+            new Restaurant("twoM","hammamet","https://media.cntraveler.com/photos/5b22bfdf633da74cbe8bd873/master/w_1200,c_limit/Buca-Yorkville_Rick-O'Brien_2018_BUCA_4SEASONS_092-(8).jpg?mbid=social_retweet",20),
+                new Restaurant("baristas","centre urbain nord" ,"https://th.bing.com/th/id/OIP.4Q39EptrW14YfZZ-8vc8mgHaFj?pid=ImgDet&rs=1",40),
+                    new Restaurant("khalil","tunis","https://th.bing.com/th/id/R.0a5ff9269f7d485895700daa46b8216c?rik=ks0%2bPBqoLDTWIQ&pid=ImgRaw&r=0",22),
+                        new Restaurant("pizza","sokra","https://th.bing.com/th/id/OIP.mudFr3EWGVKiUCzJttcErQHaEi?pid=ImgDet&rs=1",19),
+                            new Restaurant("burger","aouina","https://img.tagvenue.com/resize/6f/c6/widen-1680-noupsize;2944-the-restaurant-room.jpg",45)
+        };
+
         RestaurantRepository repository = new RestaurantRepository();
+        ReservationRepository reservationRepository = new ReservationRepository();
         public IActionResult Index(String success)
         {
             ViewBag.success = success;
@@ -77,7 +93,7 @@ namespace project_.net.Controllers
         [HttpPost]
         public IActionResult book(IFormCollection collection,int id)
         {
-            ReservationRepository reservationRepository = new ReservationRepository();
+           
             reservationRepository.addReservation(HttpContext.Session.GetInt32("userId")??-1,id,DateTime.Parse(collection["Date"]),Int32.Parse(collection["Places"]));
             return RedirectToAction(nameof(Index),new {success=$"Reservation {id} is Created Successfully"});
         }

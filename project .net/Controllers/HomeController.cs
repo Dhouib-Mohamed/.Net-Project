@@ -8,8 +8,8 @@ namespace project_.net.Controllers
 {
     public class HomeController : Controller
     {
-        ClientRepository clientRepository = new ClientRepository();
-
+        
+        ClientRepository repository = new ClientRepository();
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("user") != 1)
@@ -41,7 +41,7 @@ namespace project_.net.Controllers
         public IActionResult Signup(Client c)
         {
             //insert to data base
-            ClientRepository repository = new ClientRepository();
+            
             bool res = repository.SignUp(c);
             if (res)
             {
@@ -74,7 +74,7 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Signin(Client c)
         {
-            ClientRepository repository = new ClientRepository();
+            
             int res = repository.SignIn(c);
             Debug.Write(res);
             if (res!=-1)
