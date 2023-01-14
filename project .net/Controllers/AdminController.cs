@@ -58,6 +58,21 @@ namespace project_.net.Controllers
             }
         }
 
+        public IActionResult RestaurantsByName(IFormCollection collection)
+        {
+            if (HttpContext.Session.GetInt32("admin") != 1)
+            {
+                return RedirectToAction(nameof(Sign) );
+            }
+            else
+            {
+                ViewData["NavMenuPage"] = "Admin";
+                var restaurants = _restaurantRepository.RestaurantListByName(collection["search"]);
+                return View(restaurants);
+            }
+        }
+
+
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

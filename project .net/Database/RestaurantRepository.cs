@@ -48,7 +48,7 @@ public class RestaurantRepository
 	    List<Restaurant> restaurants = new List<Restaurant>();
 	    _context.Restaurant.ToList().ForEach((restaurant =>
 	    {
-		    if (restaurant.Name.ToLower().Contains(name.ToLower()))
+		    if (restaurant.Name.ToLower().IndexOf(name.ToLower())==0)
 		    {
 			    restaurants.Add(restaurant);
 		    }

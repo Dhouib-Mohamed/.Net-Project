@@ -15,13 +15,13 @@ public class NavMenuViewComponent : ViewComponent
         {
             case "default":
                 links = new Dictionary<string, string> {
-                    { "", "" },
                 };
 
                 break;
 
             case "Admin":
                 links = new Dictionary<string, string> {
+                    { "search", "" },
                     { "signout", "/Admin/Signout" },
                 };
 

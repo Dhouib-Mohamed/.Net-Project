@@ -13,9 +13,10 @@
         <div class=" row">
             @foreach (var link in Model)
          {
+
              if (link.Key == "search")
                     {
-                    <form class="d-flex  w-auto" action="/Restaurant/RestaurantsByName" method="post">
+                    <form class="d-flex  w-auto" action="/Admin/RestaurantsByName" method="post">
                     <input class="form-control me-sm-2" name="search" type="search" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
