@@ -14,7 +14,9 @@ public class NavMenuViewComponent : ViewComponent
         switch (pageName)
         {
             case "Admin":
-                links = new Dictionary<string, string> {};
+                links = new Dictionary<string, string> {
+                    { "signout", "/Admin/Signout" },
+                };
 
                 break;
 
@@ -22,7 +24,7 @@ public class NavMenuViewComponent : ViewComponent
                 links = new Dictionary<string, string> {
                     { "search", "" },
                     { "profile", "../Profile/ProfileDetails" },
-                    { "signout", "" },
+                    { "signout", "/Home/Signout" },
                 };
 
                 break;
