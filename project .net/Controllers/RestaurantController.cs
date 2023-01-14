@@ -18,7 +18,10 @@ namespace project_.net.Controllers
                 new Restaurant("baristas","centre urbain nord" ,"https://th.bing.com/th/id/OIP.4Q39EptrW14YfZZ-8vc8mgHaFj?pid=ImgDet&rs=1",40),
                     new Restaurant("khalil","tunis","https://th.bing.com/th/id/R.0a5ff9269f7d485895700daa46b8216c?rik=ks0%2bPBqoLDTWIQ&pid=ImgRaw&r=0",22),
                         new Restaurant("pizza","sokra","https://th.bing.com/th/id/OIP.mudFr3EWGVKiUCzJttcErQHaEi?pid=ImgDet&rs=1",19),
-                            new Restaurant("burger","aouina","https://img.tagvenue.com/resize/6f/c6/widen-1680-noupsize;2944-the-restaurant-room.jpg",45)
+                            new Restaurant("burger","aouina","https://img.tagvenue.com/resize/6f/c6/widen-1680-noupsize;2944-the-restaurant-room.jpg",45),
+                            new Restaurant("lasagne","ariana","https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/935c1071711569.5bcee78e4e619.jpg",18),
+                            new Restaurant("hiii","nabeul","https://i.pinimg.com/originals/51/61/a9/5161a9904eea6222ec3fdc2f0528504b.jpg",40)
+
         };
 
         RestaurantRepository repository = new RestaurantRepository();
