@@ -3,10 +3,11 @@ using project_.net.Database;
 using project_.net.Models;
 
 namespace project_.net.Controllers
-{
+{ 
     public class RestaurantController : Controller
     {
         RestaurantRepository repository = new RestaurantRepository();
+        ReservationRepository reservationRepository = new ReservationRepository();
         public IActionResult Index(String success)
         {
             ViewBag.success = success;
@@ -76,7 +77,7 @@ namespace project_.net.Controllers
         [HttpPost]
         public IActionResult book(IFormCollection collection,int id)
         {
-            ReservationRepository reservationRepository = new ReservationRepository();
+           
             reservationRepository.addReservation(HttpContext.Session.GetInt32("userId")??-1,id,DateTime.Parse(collection["Date"]),Int32.Parse(collection["Places"]));
             return RedirectToAction(nameof(Index),new {success=$"Reservation {id} is Created Successfully"});
         }
