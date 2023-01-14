@@ -27,8 +27,12 @@
                             <input type="tel" name="phone" class="form-control" value="@Model.phoneNumber">
                         </div>
                         <br/>
-                        <div class="col-md-6">
+                        <div class="row">
+                        <div class="col-md-3">
                             <input type="submit" class="btnLogin btn btn-dark" value="Edit profile" />
+                        </div>
+                            <div class="col-md-3"> <button class="btn btn-dark" asp-area="" asp-controller="Profile" asp-action="History">History</button>
+                            </div>
                         </div>
                         <br/>
                     </div>

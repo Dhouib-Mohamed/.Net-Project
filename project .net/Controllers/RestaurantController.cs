@@ -7,8 +7,9 @@ namespace project_.net.Controllers
     public class RestaurantController : Controller
     {
         RestaurantRepository repository = new RestaurantRepository();
-        public IActionResult Index()
+        public IActionResult Index(String success)
         {
+            ViewBag.success = success;
             if (HttpContext.Session.GetInt32("user") != 1)
             {
                 return RedirectToAction("Signin", "Home");
@@ -77,7 +78,7 @@ namespace project_.net.Controllers
         {
             ReservationRepository reservationRepository = new ReservationRepository();
             reservationRepository.addReservation(HttpContext.Session.GetInt32("userId")??-1,id,DateTime.Parse(collection["Date"]),Int32.Parse(collection["Places"]));
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),new {success=$"Reservation {id} is Created Successfully"});
         }
     }
 }

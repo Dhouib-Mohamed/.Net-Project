@@ -22,8 +22,9 @@ namespace project_.net.Controllers
                 return RedirectToAction(nameof(Index),nameof(Restaurant));
             }
         }
-        public IActionResult Signup()
+        public IActionResult Signup(String error)
         {
+            ViewBag.error = error;
             if (HttpContext.Session.GetInt32("user")!=1)
             {
                 ViewData["NavMenuPage"] = "disconnected";
@@ -46,14 +47,18 @@ namespace project_.net.Controllers
             {
                 HttpContext.Session.SetInt32("user", 1);
                 HttpContext.Session.SetInt32("userId", c.Id);
-                return RedirectToAction("Index","Restaurant");
+                return RedirectToAction("Index","Restaurant",new{success=$"user {c.Name} is Created Successfully"});
+            }
+            else
+            {
+                return RedirectToAction(nameof(Signup),new {error="Error in provided data"});
             }
             // redirect to /Client/index
-            return RedirectToAction(nameof(Signup));
 
         }
-        public IActionResult Signin()
+        public IActionResult Signin(String error)
         {
+            ViewBag.error = error;
             if (HttpContext.Session.GetInt32("user")!=1)
             {
                 ViewData["NavMenuPage"] = "disconnected";
@@ -71,22 +76,30 @@ namespace project_.net.Controllers
         {
             ClientRepository repository = new ClientRepository();
             int res = repository.SignIn(c);
-            Debug.Write("hi");
             Debug.Write(res);
             if (res!=-1)
             {
                 HttpContext.Session.SetInt32("user", 1);
-                HttpContext.Session.SetInt32("userId", c.Id);
-                return RedirectToAction("Index","Restaurant");
+                HttpContext.Session.SetInt32("userId", res);
+                return RedirectToAction("Index","Restaurant",new {success=$"user {c.Name} is Connected Successfully"});
+            }
+            else
+            {
+                return RedirectToAction(nameof(Signin),new {error=$"Error in provided data"});
             }
             // redirect to /Client/index
-            return RedirectToAction(nameof(Signin));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Signout()
+        {
+            HttpContext.Session.SetInt32("user", 0);
+            HttpContext.Session.SetInt32("userId", -1);
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult Faker()
         {

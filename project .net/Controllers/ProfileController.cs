@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using project_.net.Database;
 using project_.net.Models;
 
@@ -22,9 +23,11 @@ namespace project_.net.Controllers
         
     }
         ReservationRepository rep2 = new ReservationRepository();
-        public IActionResult History()
+        public IActionResult History(String success)
         {
-            if (HttpContext.Session.GetInt32("user")!=1)
+            ViewBag.success = success;
+            ViewData["NavMenuPage"] = "profile";
+        if (HttpContext.Session.GetInt32("user")!=1)
             {
                 return RedirectToAction("Signin","Home");
             }
@@ -58,8 +61,8 @@ namespace project_.net.Controllers
             }
             else
             {
-                rep2.deleteReservation(id); 
-                return RedirectToAction(nameof(History));
+                rep2.deleteReservation(id);
+                return RedirectToAction(nameof(History),new {success =$"Reservation {id} is Deleted Successfully"});
             }
         }
     }

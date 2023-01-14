@@ -58,7 +58,6 @@ public class RestaurantRepository
     public void deleteRestaurant(int id)
     {
 	    Restaurant restaurant = getRestaurantById(id);
-	    Console.Write(restaurant.categories);
 	    restaurant.categories.ForEach((category => _context.Category.Remove(category)
 			    ));
 	    _context.SaveChanges();
