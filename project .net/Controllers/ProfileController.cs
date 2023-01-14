@@ -49,5 +49,18 @@ namespace project_.net.Controllers
             rep1.editClient(c);
             return RedirectToAction(nameof(ProfileDetails));
         }
+
+        public ActionResult DeleteReservation(int id)
+        {
+            if (HttpContext.Session.GetInt32("user") != 1)
+            {
+                return RedirectToAction("Signin", "Home");
+            }
+            else
+            {
+                rep2.deleteReservation(id); 
+                return RedirectToAction(nameof(History));
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using project_.net.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using project_.net.Models;
 
 namespace project_.net.Database
 {
@@ -24,5 +25,17 @@ namespace project_.net.Database
             context.Reservation.Add(reservation);
             context.SaveChanges();
         }
+        public Reservation getReservationById(int id)
+        {
+            Reservation res = context.Reservation.Find(id);
+            return res;
+        }
+        public void deleteReservation(int id)
+        {
+            Reservation r = getReservationById(id);
+            context.Reservation.Remove(r);
+            context.SaveChanges();
+        }
+        
     }
 }

@@ -10,6 +10,8 @@
             <th scope="col">Restaurant</th>
             <th scope="col">Date</th>
             <th scope="col">Nombre de places reservées</th>
+            <th scope="col"></th>
+
         </tr>
     </thead>
     <tbody>
@@ -20,6 +22,8 @@
                 <td>@r.restaurant</td>
                 <td>@r.date.Day/@r.date.Month/@r.date.Year</td>
                 <td>@r.nbPlacesRes</td>
+                <td><a href="../Profile/DeleteReservation/@r.Id"><button type="button" class="btn btn-danger btn-sm">Cancel Reservation</button></a></td>
+
             </tr>
             }
         }
