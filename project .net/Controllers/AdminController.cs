@@ -11,8 +11,9 @@ namespace project_.net.Controllers
 
         readonly RestaurantRepository _restaurantRepository = new RestaurantRepository();
         // GET: AdminController
-        public ActionResult Index()
+        public ActionResult Index(String success="")
         {
+            ViewBag.success = success;
             if (HttpContext.Session.GetInt32("admin")!=1)
             {
                 return RedirectToAction(nameof(Sign));
@@ -26,8 +27,9 @@ namespace project_.net.Controllers
                 return View();   
             }
         }
-        public ActionResult Sign()
+        public ActionResult Sign(String error="")
         {
+            ViewBag.error = error;
             if (HttpContext.Session.GetInt32("admin") != 1)
             {
                 return View();
@@ -41,21 +43,26 @@ namespace project_.net.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Sign(IFormCollection collection)
         {
+            
             if (collection["code"] == "nada debla")
             {
                 HttpContext.Session.SetInt32("admin",1);
+                return RedirectToAction(nameof(Index),new {success="Admin Access Granted"});
             }
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                return RedirectToAction(nameof(Sign), new { error = "Incorrect code" });
+            }
         }
 
         // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRestaurant(IFormCollection collection)
-        { 
+        {
             Restaurant restaurant = new Restaurant(collection["Name"], collection["Localization"], collection["Image"], Int16.Parse(collection["Places"]));
             _restaurantRepository.addRestaurant(restaurant);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),new {success="Restaurant Created Successfully"});
         }
         public ActionResult CreateRestaurant()
         {
@@ -78,7 +85,7 @@ namespace project_.net.Controllers
             restaurant.Name = collection["Name"];
             restaurant.Localization = collection["Localization"];
             _restaurantRepository.editRestaurant(restaurant);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),new {success="Restaurant Changed Successfully"});
         }
         public ActionResult RestaurantDetails(int id)
         {
@@ -104,7 +111,7 @@ namespace project_.net.Controllers
             {
                 
                 _restaurantRepository.deleteRestaurant(id);
-                return RedirectToAction(nameof(Index)); 
+                return RedirectToAction(nameof(Index),new {success="Restaurant Deleted Successfully"}); 
             }
         }
         public ActionResult DeleteClient(int id)
@@ -116,7 +123,7 @@ namespace project_.net.Controllers
             else
             {
                 _clientRepository.deleteClient(id);
-                return RedirectToAction(nameof(Index)); 
+                return RedirectToAction(nameof(Index),new {success="Client Created Successfully"}); 
             }
         }
     }
