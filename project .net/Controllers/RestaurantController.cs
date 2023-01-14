@@ -31,6 +31,7 @@ namespace project_.net.Controllers
             else
             {
                 ViewData["NavMenuPage"] = "connected";
+                ViewBag.search = collection["search"];
                 var restaurants = repository.RestaurantListByName(collection["search"]);
                 return View(restaurants);
             }
