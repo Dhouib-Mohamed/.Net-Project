@@ -11,6 +11,13 @@ namespace project_.net.Models
         public String Localization { get; set; }
         public String image { get; set; }
         public int NbPlaces { get; set; }
+
+        public String getCategories()
+        {
+            List<String> cat = new List<string>(); 
+            categories.ForEach( category => { cat.Add(category.Name); });
+            return String.Join(",",cat);
+        }
          
         public List<Category> categories { get; set; }
 

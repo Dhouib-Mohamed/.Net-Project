@@ -41,16 +41,17 @@
         </nav>-->
     }
 </header>
+<div style="padding-top:100px" class="container">
+    
 @if (ViewBag.error!=null && ViewBag.error != "")
 {<div class="alert alert-danger" role="alert">@ViewBag.error</div>}
 @if (ViewBag.success!=null && ViewBag.success != "")
 {<div class="alert alert-success" role="alert">@ViewBag.success</div>}
 
-    <div style="padding-top:100px"  class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

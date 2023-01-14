@@ -70,6 +70,20 @@ namespace project_.net.Controllers
             }
 
         }
+        public IActionResult add()
+        {
+            if (HttpContext.Session.GetInt32("user") == 1)
+            {
+                RestaurantRepository restaurantRepository = new RestaurantRepository();
+                Restaurant restaurant = new Restaurant("hiuypo", "kdfsvb","lids",3); 
+                restaurantRepository.addRestaurant(restaurant);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction("Signin","Home");
+            }
+        }
 
         public IActionResult Faker()
         {

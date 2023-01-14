@@ -8,8 +8,9 @@ namespace project_.net.Controllers
     public class ProfileController : Controller
     {
         ClientRepository rep1 = new ClientRepository();
-        public IActionResult ProfileDetails()
+        public IActionResult ProfileDetails( String success)
         {
+            ViewBag.success = success;
             if (HttpContext.Session.GetInt32("user") != 1)
             {
                 return RedirectToAction("Signin","Home");
@@ -49,7 +50,7 @@ namespace project_.net.Controllers
             c.password = collection["password"];
             c.phoneNumber = collection["phone"];
             rep1.editClient(c);
-            return RedirectToAction(nameof(ProfileDetails));
+            return RedirectToAction(nameof(ProfileDetails),new {success = "Profile Changed Successfully"});
         }
 
         public ActionResult DeleteReservation(int id)
