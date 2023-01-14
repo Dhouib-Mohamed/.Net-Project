@@ -41,7 +41,7 @@ namespace project_.net.Controllers
                 return RedirectToAction("Index","Restaurant");
             }
             // redirect to /Client/index
-            return View();
+            return RedirectToAction(nameof(Signup));
 
         }
         public IActionResult Signin()
@@ -62,6 +62,8 @@ namespace project_.net.Controllers
         {
             ClientRepository repository = new ClientRepository();
             int res = repository.SignIn(c);
+            Debug.Write("hi");
+            Debug.Write(res);
             if (res!=-1)
             {
                 HttpContext.Session.SetInt32("user", 1);
@@ -69,7 +71,7 @@ namespace project_.net.Controllers
                 return RedirectToAction("Index","Restaurant");
             }
             // redirect to /Client/index
-            return View();
+            return RedirectToAction(nameof(Signin));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

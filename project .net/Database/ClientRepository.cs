@@ -35,10 +35,9 @@ namespace project_.net.Database
         }
         public int SignIn(Client c)
         {
-            List<Client> clients = context.Client
-                .Where(client => (client.email == c.email && client.password == c.password)).ToList();
+            List<Client> clients = context.Client.Where(client => (client.email == c.email && client.password == c.password)).ToList();
             if (clients.Count!=0)
-            {
+            { 
                 return clients[0].Id;
             }
 
