@@ -21,7 +21,7 @@ public class NavMenuViewComponent : ViewComponent
 
             case "Admin":
                 links = new Dictionary<string, string> {
-                    { "search", "" },
+                    { "search", "/admin/RestaurantsByName" },
                     { "signout", "/Admin/Signout" },
                 };
 
@@ -29,7 +29,7 @@ public class NavMenuViewComponent : ViewComponent
 
             case "connected":
                 links = new Dictionary<string, string> {
-                    { "search", "" },
+                    { "search", "/Restaurant/RestaurantsByName" },
                     { "profile", "../Profile/ProfileDetails" },
                     { "signout", "/Home/Signout" },
                 };

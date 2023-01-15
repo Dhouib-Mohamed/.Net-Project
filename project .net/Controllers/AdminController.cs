@@ -47,7 +47,7 @@ namespace project_.net.Controllers
         public ActionResult Sign(IFormCollection collection)
         {
             
-            if (collection["code"] == "nada debla")
+            if (collection["code"] == "nadaadmin")
             {
                 HttpContext.Session.SetInt32("admin",1);
                 return RedirectToAction(nameof(Index),new {success="Admin Access Granted"});
@@ -120,7 +120,7 @@ namespace project_.net.Controllers
             }
             else
             {
-                ViewData["NavMenuPage"] = "admin";
+                ViewData["NavMenuPage"] = "Admin";
                 Restaurant restaurant = _restaurantRepository.getRestaurantById(id);
                 return View(restaurant);  
             }
