@@ -20,13 +20,14 @@
     {
         <tr>
             <th scope="row">@r.Id</th>
-            <td><a href="Admin/RestaurantDetails/@r.Id">
-                @r.Name
-            </a>
+            <td>
+                <a href="Admin/RestaurantDetails/@r.Id">
+                    @r.Name
+                </a>
             </td>
             <td>@r.Localization</td>
             <td>@r.NbPlaces</td>
-            <td>@r.categories.Count</td>
+            <td>@r.getCategories() @r.categories.Count</td>
             <td><a href="Admin/DeleteRestaurant/@r.Id"><button type="button" class="btn btn-danger btn-sm">Delete Restaurant</button></a></td>
             </tr>
     }

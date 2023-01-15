@@ -25,6 +25,7 @@ namespace project_.net.Database
                 RestaurantRepository restaurantRepository = new RestaurantRepository();
                 Restaurant r = new Restaurant(Faker.Company.Name(), Faker.Address.StreetName(), "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/435px-Barbieri_-_ViaSophia25668.jpg", Faker.RandomNumber.Next(5, 50));
                 r.categories.Add(c);
+                context.Category.Add(c);
                 context.Restaurant.Add(r);
                 context.SaveChanges();
             }

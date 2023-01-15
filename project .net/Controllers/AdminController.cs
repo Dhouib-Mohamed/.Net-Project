@@ -68,6 +68,7 @@ namespace project_.net.Controllers
             {
                 ViewData["NavMenuPage"] = "Admin";
                 var restaurants = _restaurantRepository.RestaurantListByName(collection["search"]);
+                ViewBag.search = collection["search"];
                 return View(restaurants);
             }
         }
